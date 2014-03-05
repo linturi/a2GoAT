@@ -7,6 +7,7 @@
 
 #include "GTreeManager.h"
 #include "GHistTaggedMeson.h"
+#include "GHistHelTaggedMeson.h"
 
 
 class  GPlot    : public GTreeManager
@@ -14,7 +15,7 @@ class  GPlot    : public GTreeManager
 private:
     TFile*  file;
 
-    GHistTaggedPi0*  pi0Hist;
+    GHistHelTaggedMeson*  pi0Hist;
     GHistTagged3Pi0* _3pi0Hist;
     GHistTaggedEta*  etaHist;
     GHistTaggedEtap* etapHist;

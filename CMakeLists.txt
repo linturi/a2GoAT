@@ -36,6 +36,7 @@ add_executable(goat
    inc/GTreeScaler.h
    inc/GTreeParticle.h
    inc/GTreeMeson.h
+   inc/GTreeTrigger.h
    inc/GTreeManager.h
    inc/GCorrectScalers.h
    src/GTree.cc
@@ -45,6 +46,7 @@ add_executable(goat
    src/GTreeScaler.cc
    src/GTreeParticle.cc
    src/GTreeMeson.cc
+   src/GTreeTrigger.cc
    src/GTreeManager.cc
    src/GCorrectScalers.cc
    src/GoAT.cc
@@ -59,6 +61,7 @@ add_executable(meson
    inc/GTreeScaler.h
    inc/GTreeParticle.h
    inc/GTreeMeson.h
+   inc/GTreeTrigger.h
    inc/GTreeManager.h
    inc/GMesonReconstruction.h
    src/GTree.cc
@@ -68,6 +71,7 @@ add_executable(meson
    src/GTreeScaler.cc
    src/GTreeParticle.cc
    src/GTreeMeson.cc
+   src/GTreeTrigger.cc
    src/GTreeManager.cc
    src/GMesonReconstruction.cc
    src/meson.cc
@@ -82,6 +86,7 @@ add_executable(tagger
    inc/GTreeScaler.h
    inc/GTreeParticle.h
    inc/GTreeMeson.h
+   inc/GTreeTrigger.h
    inc/GTreeManager.h
    inc/GTaggerReconstruction.h
    src/GTree.cc
@@ -91,6 +96,7 @@ add_executable(tagger
    src/GTreeScaler.cc
    src/GTreeParticle.cc
    src/GTreeMeson.cc
+   src/GTreeTrigger.cc
    src/GTreeManager.cc
    src/GTaggerReconstruction.cc
    src/tagger.cc
@@ -105,6 +111,7 @@ add_executable(proton
    inc/GTreeScaler.h
    inc/GTreeParticle.h
    inc/GTreeMeson.h
+   inc/GTreeTrigger.h
    inc/GTreeManager.h
    inc/GProtonReconstruction.h
    src/GTree.cc
@@ -115,6 +122,7 @@ add_executable(proton
    src/GTreeParticle.cc
    src/GTreeManager.cc
    src/GTreeMeson.cc
+   src/GTreeTrigger.cc
    src/GProtonReconstruction.cc
    src/proton.cc
    )
@@ -129,10 +137,12 @@ add_executable(plot
    inc/GTreeScaler.h
    inc/GTreeParticle.h
    inc/GTreeMeson.h
+   inc/GTreeTrigger.h
    inc/GTreeManager.h
    inc/GHistParticle.h
    inc/GHistTaggedParticle.h
    inc/GHistTaggedMeson.h
+   inc/GHistHelTaggedMeson.h
    inc/GPlot.h
    src/GTree.cc
    src/GTreeRawEvent.cc
@@ -141,10 +151,12 @@ add_executable(plot
    src/GTreeScaler.cc
    src/GTreeParticle.cc
    src/GTreeMeson.cc
+   src/GTreeTrigger.cc
    src/GTreeManager.cc
    src/GHistParticle.cc
    src/GHistTaggedParticle.cc
    src/GHistTaggedMeson.cc
+   src/GHistHelTaggedMeson.cc
    src/GPlot.cc
    src/plot.cc
    )
@@ -158,6 +170,7 @@ add_executable(cut
    inc/GTreeScaler.h
    inc/GTreeParticle.h
    inc/GTreeMeson.h
+   inc/GTreeTrigger.h
    inc/GTreeManager.h
    inc/GHistParticle.h
    inc/GHistTaggedParticle.h
@@ -170,6 +183,7 @@ add_executable(cut
    src/GTreeScaler.cc
    src/GTreeParticle.cc
    src/GTreeMeson.cc
+   src/GTreeTrigger.cc
    src/GTreeManager.cc
    src/GHistParticle.cc
    src/GHistTaggedParticle.cc

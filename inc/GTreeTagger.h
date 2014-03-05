@@ -22,7 +22,9 @@ private:
     Char_t          promptIndex[GTreeTagger_MAX];
     Char_t          nRand;
     Char_t          randIndex[GTreeTagger_MAX];
+    //Int_t           nBeamPol;
     TClonesArray*	missing;
+
 
 protected:
     virtual void    SetBranchAdresses();
@@ -49,6 +51,7 @@ public:
             Int_t           GetTagged_ch(const Int_t index)     const	{return tagged_ch[index];}
     const	Double_t*       GetTagged_t()                       const	{return tagged_t;}
             Double_t        GetTagged_t(const Int_t index)      const	{return tagged_t[index];}
+           // Int_t           GetNBeampol()                       const   {return nBeamPol;}
     TLorentzVector          GetVector(const Int_t index)        const   {return TLorentzVector(0, 0, photonbeam_E[index], photonbeam_E[index]);}
             void            RemovePrompt(const Int_t index);
             void            RemoveRand(const Int_t index);

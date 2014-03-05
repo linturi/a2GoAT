@@ -37,6 +37,7 @@ void  GCorrectScalers::ProcessEvent()
     tagger->Fill();
     photons->Fill();
     protons->Fill();
+    trigger->Fill();
     actualEvent++;
 }
 
@@ -46,6 +47,7 @@ Bool_t  GCorrectScalers::Process(const char* input_filename, const char* output_
     if(!OpenRawEvent())    return kFALSE;
     if(!OpenTagger())    return kFALSE;
     if(!OpenScalers())    return kFALSE;
+    if(!OpenTrigger())    return kFALSE;
     //if(!OpenEventFlags())    return kFALSE;
 
     if(scalers->GetNEntries()<2)    return kFALSE;
@@ -59,6 +61,7 @@ Bool_t  GCorrectScalers::Process(const char* input_filename, const char* output_
     if(!CreateProtons())    return kFALSE;
     if(!CreateTagger())    return kFALSE;
     if(!CreateEventFlags())    return kFALSE;
+    if(!CreateTrigger())    return kFALSE;
     scalers->Clone(*file_out);
 
     file_out->cd();

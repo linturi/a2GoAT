@@ -6,8 +6,8 @@ GHistTaggedParticleWindow::GHistTaggedParticleWindow(TDirectory* _Dir) :
 {
     dir->cd();
     taggerTime  = new TH1D("TaggerTimeOR", "TaggerTimeOR", 200, -50, 50);
-    taggerE     = new TH1D("TaggerEnergy", "TaggerEnergy", 300, 1350, 1650);
-    taggerCh    = new TH1I("TaggerChannel", "TaggerChannel", 48, 0, 48);
+    taggerE     = new TH1D("TaggerEnergy", "TaggerEnergy", 1500, 0, 1650);
+    taggerCh    = new TH1I("TaggerChannel", "TaggerChannel", 352, 0, 351);
     dir->mkdir("particle");
     dir->cd();
     dir->mkdir("missing");
@@ -25,6 +25,15 @@ GHistTaggedParticleWindow::~GHistTaggedParticleWindow()
     if(taggerCh)  delete  taggerCh;
     if(particle)  delete  particle;
     if(missing)  delete  missing;
+}
+
+void    GHistTaggedParticleWindow::Divide(const GHistTaggedParticleWindow *hist)
+{
+    taggerTime->Divide(hist->taggerTime);
+    taggerE->Divide(hist->taggerE);
+    taggerCh->Divide(hist->taggerCh);
+    particle->Divide(hist->particle);
+    missing->Divide(hist->missing);
 }
 
 void    GHistTaggedParticleWindow::Add(const GHistTaggedParticleWindow* hist, const Double_t scale)
@@ -73,6 +82,13 @@ GHistTaggedParticle::~GHistTaggedParticle()
     if(diff)    delete  diff;
     if(prompt)  delete  prompt;
     if(rand)    delete  rand;
+}
+
+void    GHistTaggedParticle::Divide(const GHistTaggedParticle *hist)
+{
+    prompt->Divide(hist->prompt);
+    rand->Divide(hist->rand);
+    diff->Divide(hist->diff);
 }
 
 void    GHistTaggedParticle::Add(const GHistTaggedParticle* hist, const Double_t scale)

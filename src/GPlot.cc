@@ -3,6 +3,8 @@
 
 using namespace std;
 
+//const Bool_t IsReversed = kTRUE;
+
 
 GPlot::GPlot()
 {
@@ -22,17 +24,18 @@ void  GPlot::ProcessEvent()
         {
             if(tagger->GetNPrompt() == 1)
             {
-                pi0Hist->FillPromptTagger(tagger->GetMissingVector(tagger->GetPromptIndex(0)),tagger->GetTagged_t(tagger->GetPromptIndex(0)),tagger->GetPhotonBeam_E(tagger->GetPromptIndex(0)),tagger->GetTagged_ch(tagger->GetPromptIndex(0)));
-                pi0Hist->FillPromptMeson(pi0->Particle(0));
-                pi0Hist->FillPromptPhoton(photons->Particle(pi0->GetDaughterIndex(0,0)), photons->Particle(pi0->GetDaughterIndex(0,1)));
+                pi0Hist->FillPromptTagger(trigger->GetHelicityBit(), tagger->GetMissingVector(tagger->GetPromptIndex(0)),tagger->GetTagged_t(tagger->GetPromptIndex(0)),tagger->GetPhotonBeam_E(tagger->GetPromptIndex(0)),tagger->GetTagged_ch(tagger->GetPromptIndex(0)));
+                pi0Hist->FillPromptMeson(trigger->GetHelicityBit(), pi0->Particle(0));
+                pi0Hist->FillPromptPhoton(trigger->GetHelicityBit(), photons->Particle(pi0->GetDaughterIndex(0,0)), photons->Particle(pi0->GetDaughterIndex(0,1)));
             }
             if(tagger->GetNRand() == 1)
             {
-                pi0Hist->FillRandTagger(tagger->GetMissingVector(tagger->GetRandIndex(0)),tagger->GetTagged_t(tagger->GetRandIndex(0)),tagger->GetPhotonBeam_E(tagger->GetRandIndex(0)),tagger->GetTagged_ch(tagger->GetRandIndex(0)));
-                pi0Hist->FillRandMeson(pi0->Particle(0));
-                pi0Hist->FillRandPhoton(photons->Particle(pi0->GetDaughterIndex(0,0)), photons->Particle(pi0->GetDaughterIndex(0,1)));
+                pi0Hist->FillRandTagger(trigger->GetHelicityBit(), tagger->GetMissingVector(tagger->GetRandIndex(0)),tagger->GetTagged_t(tagger->GetRandIndex(0)),tagger->GetPhotonBeam_E(tagger->GetRandIndex(0)),tagger->GetTagged_ch(tagger->GetRandIndex(0)));
+                pi0Hist->FillRandMeson(trigger->GetHelicityBit(), pi0->Particle(0));
+                pi0Hist->FillRandPhoton(trigger->GetHelicityBit(), photons->Particle(pi0->GetDaughterIndex(0,0)), photons->Particle(pi0->GetDaughterIndex(0,1)));
             }
         }
+
         else if(eta->GetNParticles() == 1)
         {
             if(tagger->GetNPrompt() == 1)
@@ -141,18 +144,21 @@ Bool_t  GPlot::Process(const char* input_filename, const char* output_filename)
     if(!OpenEta())    return kFALSE;
     if(!OpenPi0())    return kFALSE;
     if(!OpenTagger())    return kFALSE;
+    if(!OpenTrigger())    return kFALSE;
 
     if(!Create(output_filename))    return kFALSE;
 
     file_out->cd();
     gDirectory->mkdir("pi0");
     file_out->cd();
+    gDirectory->mkdir("parapi0");
+    file_out->cd();
     gDirectory->mkdir("eta");
     file_out->cd();
     gDirectory->mkdir("etap");
 
     file_out->cd();
-    pi0Hist = new GHistTaggedPi0(gDirectory->GetDirectory("pi0"));
+    pi0Hist = new GHistHelTaggedMeson(gDirectory->GetDirectory("pi0"));
     file_out->cd();
     etaHist = new GHistTaggedEta(gDirectory->GetDirectory("eta"));
     file_out->cd();

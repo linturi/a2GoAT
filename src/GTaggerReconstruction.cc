@@ -6,12 +6,12 @@ using namespace std;
 
 GTaggerReconstruction::GTaggerReconstruction()
 {
-    randWindow[0][0]    = -15;
+    randWindow[0][0]    = -30;
     randWindow[0][1]    = -10;
     promptWindow[0]     = -5;
-    promptWindow[1]     = 5;
-    randWindow[1][0]    = 10;
-    randWindow[1][1]    = 15;
+    promptWindow[1]     = 15;
+    randWindow[1][0]    = 20;
+    randWindow[1][1]    = 40;
 }
 
 GTaggerReconstruction::~GTaggerReconstruction()
@@ -31,7 +31,7 @@ void  GTaggerReconstruction::ProcessEvent()
             tagged_ch[nTagged]      = tagger->GetTagged_ch(i);
             tagged_t[nTagged]       = tagger->GetTagged_t(i);
             photonbeam_E[nTagged]   = tagger->GetPhotonBeam_E(i);
-            missingVector[nTagged].SetPxPyPzE(0,0,photonbeam_E[nTagged],photonbeam_E[nTagged] + MASS_PROTON);
+                      missingVector[nTagged].SetPxPyPzE(0,0,photonbeam_E[nTagged],photonbeam_E[nTagged] + MASS_PROTON);
             for(int p=0; p<photons->GetNParticles(); p++)
                missingVector[nTagged]   -= photons->Particle(p);
 
@@ -65,6 +65,7 @@ Bool_t  GTaggerReconstruction::Process(const char* input_filename, const char* o
     if(!OpenProtons())    return kFALSE;
     if(!OpenTagger())    return kFALSE;
     if(!OpenScalers())    return kFALSE;
+    if(!OpenTrigger())    return kFALSE;
     if(!OpenEventFlags())    return kFALSE;
 
 
@@ -76,6 +77,7 @@ Bool_t  GTaggerReconstruction::Process(const char* input_filename, const char* o
     protons->Clone(*file_out);
     if(!CreateTagger())    return kFALSE;
     eventFlags->Clone(*file_out);
+    trigger->Clone(*file_out);
     scalers->Clone(*file_out);
 
     TraverseEntries(0, photons->GetNEntries()+1);

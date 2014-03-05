@@ -25,6 +25,7 @@ public:
     GHistParticle(TDirectory *_Dir);
     virtual ~GHistParticle();
 
+            void    Divide(const GHistParticle *hist);
             void    Add(const GHistParticle *hist, const Double_t scale);
     inline  void    Fill(const TLorentzVector& vec);
     virtual void    Write();

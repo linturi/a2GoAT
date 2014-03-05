@@ -31,6 +31,8 @@ public:
     GHistTaggedMeson(TDirectory* _Dir, const Int_t type = FLAG_PI0);
     virtual ~GHistTaggedMeson();
 
+            void    Divide(const GHistTaggedMeson *hist);
+            void    Add(const GHistTaggedMeson *hist, const Double_t scale);
     inline  void    FillPromptTagger(const TLorentzVector& mis, const Double_t _TaggerTime, const Double_t _TaggerEnergy, const Int_t _TaggerChannel);
     inline  void    FillRandTagger(const TLorentzVector& mis, const Double_t _TaggerTime, const Double_t _TaggerEnergy, const Int_t _TaggerChannel);
     inline  void    FillPromptMeson(const TLorentzVector& vec)   {meson->FillPromptParticle(vec);}

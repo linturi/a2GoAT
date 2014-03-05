@@ -70,6 +70,7 @@ add_executable(MyGoATPlot
    inc/GTreeScaler.h
    inc/GTreeParticle.h
    inc/GTreeMeson.h
+   inc/GTreeTrigger.h
    inc/GTreeManager.h
    inc/GPlotTime.h
    inc/GHist.h
@@ -82,6 +83,7 @@ add_executable(MyGoATPlot
    src/GTreeScaler.cc
    src/GTreeParticle.cc
    src/GTreeMeson.cc
+   src/GTreeTrigger.cc
    src/GTreeManager.cc
    src/GPlotTime.cc
    src/GHist.cc
@@ -98,6 +100,7 @@ add_executable(MyGoATCut
    inc/GTreeScaler.h
    inc/GTreeParticle.h
    inc/GTreeMeson.h
+   inc/GTreeTrigger.h
    inc/GTreeManager.h
    inc/GRawCut.h
    inc/GCut.h
@@ -109,6 +112,7 @@ add_executable(MyGoATCut
    src/GTreeScaler.cc
    src/GTreeParticle.cc
    src/GTreeMeson.cc
+   src/GTreeTrigger.cc
    src/GTreeManager.cc
    src/GRawCut.cc
    src/GCut.cc

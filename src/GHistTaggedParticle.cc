@@ -104,7 +104,7 @@ void    GHistTaggedParticle::Write()
     rand->Write();
     dir->cd();
     diff->Add(prompt, 1);
-    diff->Add(rand, -0.5);
+    diff->Add(rand, -0.01);
     diff->Write();
     dir->cd();
 }

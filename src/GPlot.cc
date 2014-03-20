@@ -20,7 +20,6 @@ bin3_hi= 400;
 
 GPlot::~GPlot()
 {
-   // if(file)    delete file;
 }
 
 void  GPlot::ProcessEvent()

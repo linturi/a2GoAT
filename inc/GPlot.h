@@ -16,7 +16,6 @@
 class  GPlot    : public GTreeManager
 {
 private:
-    TFile*  file;
 
     GHistHelTaggedMeson*  pi0Hist;
     GHistHelTaggedMeson*  pi0Hist0;

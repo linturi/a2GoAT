@@ -4,6 +4,9 @@
 
 #include <TH1D.h>
 #include <TH1I.h>
+#include <TAxis.h>
+#include <TGraphErrors.h>
+#include <TCanvas.h>
 
 #include "GTreeManager.h"
 #include "GHistTaggedMeson.h"
@@ -16,8 +19,9 @@ private:
     TFile*  file;
 
     GHistHelTaggedMeson*  pi0Hist;
+    GHistHelTaggedMeson*  etaHist;
     GHistTagged3Pi0* _3pi0Hist;
-    GHistTaggedEta*  etaHist;
+    //GHistTaggedEta*  etaHist;
     GHistTaggedEtap* etapHist;
 
 protected:

@@ -32,6 +32,8 @@ GHistHelTaggedMeson::~GHistHelTaggedMeson()
 {
     if(hel0)  delete  hel0;
     if(hel1)  delete  hel1;
+    if(hel0)  delete  hel0;
+    if(hel0)  delete  hel0;
 }
 
 

@@ -6,13 +6,13 @@ GHistParticle::GHistParticle(TDirectory* _Dir)  :
     dir(_Dir)
 {
     dir->cd();
-    Px  = new TH1D("Px", "Px", 4000, -2000, 2000);
-    Py  = new TH1D("Py", "Py", 4000, -2000, 2000);
-    Pz  = new TH1D("Pz", "Pz", 4000, -2000, 2000);
+    Px  = new TH1D("Px", "Px", 2500, -500, 2000);
+    Py  = new TH1D("Py", "Py", 2500, -500, 2000);
+    Pz  = new TH1D("Pz", "Pz", 2500, -500, 2000);
     E   = new TH1D("E", "E", 2000, 0, 2000);
-    M   = new TH1D("M", "M", 4000, -2000, 2000);
+    M   = new TH1D("M", "Mass", 2500, -500, 2000);
     Theta   = new TH1D("Theta", "Theta", 180, 0, 180);
-    Phi     = new TH1D("Phi", "Phi", 360, 0, 360);
+    Phi     = new TH1D("Phi", "Phi", 360, -180, 180);
 }
 
 GHistParticle::~GHistParticle()

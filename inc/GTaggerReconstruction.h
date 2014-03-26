@@ -12,7 +12,6 @@ private:
     Double_t        promptWindow[2];
 
     Int_t           nTagged;
-    UShort_t        BeamPola;
     Int_t           tagged_ch[GTreeTagger_MAX];
     Double_t        tagged_t[GTreeTagger_MAX];
     Double_t        photonbeam_E[GTreeTagger_MAX];

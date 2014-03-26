@@ -6,12 +6,12 @@ using namespace std;
 
 GTaggerReconstruction::GTaggerReconstruction()
 {
-    randWindow[0][0]    = -30;
-    randWindow[0][1]    = -10;
-    promptWindow[0]     = -5;
-    promptWindow[1]     = 15;
-    randWindow[1][0]    = 20;
-    randWindow[1][1]    = 40;
+    randWindow[0][0]    = -35;
+    randWindow[0][1]    = -15;
+    promptWindow[0]     = -10;
+    promptWindow[1]     = 20;
+    randWindow[1][0]    = 25;
+    randWindow[1][1]    = 45;
 }
 
 GTaggerReconstruction::~GTaggerReconstruction()

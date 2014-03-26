@@ -3,7 +3,6 @@
 GTreeTagger::GTreeTagger()    :
     GTree(TString("treeTagger")),
     nTagged(0),
-    //nBeamPol(0),
     nPrompt(0),
     nRand(0),
     missing(new TClonesArray("TLorentzVector", 32000))
@@ -27,7 +26,7 @@ void    GTreeTagger::SetBranchAdresses()
     tree_in->SetBranchAddress("nRand", 	&nRand);
     tree_in->SetBranchAddress("randIndex", randIndex);
     tree_in->SetBranchAddress("missing.", &missing);
-    //tree_in->SetBranchAddress("nBeamPol", &nBeamPol);
+
 }
 
 void    GTreeTagger::SetBranches()
@@ -41,7 +40,7 @@ void    GTreeTagger::SetBranches()
     tree_out->Branch("nRand", &nRand, "nRand/B");
     tree_out->Branch("randIndex", randIndex, "randIndex[nRand]/B");
     tree_out->Branch("missing.", &missing, 32000, 0);
-   // tree_out->Branch("nBeamPol", &nBeamPol, "nBeamPol/I");
+
 }
 
 

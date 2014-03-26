@@ -192,3 +192,28 @@ add_executable(cut
    src/cut.cc
    )
 target_link_libraries(cut ${ROOT_LIBRARIES})
+
+add_executable(plotJames
+   inc/GTree.h
+   inc/GTreeRawEvent.h
+   inc/GTreeEvent.h
+   inc/GTreeTagger.h
+   inc/GTreeScaler.h
+   inc/GTreeParticle.h
+   inc/GTreeMeson.h
+   inc/GTreeTrigger.h
+   inc/GTreeManager.h
+   inc/GPlotJames.h
+   src/GTree.cc
+   src/GTreeRawEvent.cc
+   src/GTreeEvent.cc
+   src/GTreeTagger.cc
+   src/GTreeScaler.cc
+   src/GTreeParticle.cc
+   src/GTreeMeson.cc
+   src/GTreeTrigger.cc
+   src/GTreeManager.cc
+   src/GPlotJames.cc
+   src/plotJames.cc
+   )
+target_link_libraries(plotJames ${ROOT_LIBRARIES})

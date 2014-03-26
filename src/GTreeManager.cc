@@ -82,6 +82,11 @@ Bool_t  GTreeManager::TraverseEntries(const UInt_t min, const UInt_t max)
             if(trigger->IsOpenForInput())
                 trigger->GetEntryFast(i); //Added by James
         }
+        if(eventFlags)
+        {
+            if(eventFlags->IsOpenForInput())
+                eventFlags->GetEntryFast(i); //Added by James
+        }
         ProcessEvent();
     }
 }

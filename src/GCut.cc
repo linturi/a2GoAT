@@ -7,13 +7,13 @@ using namespace std;
 GCut::GCut()
 {
     pi0InvMass[0]   = 100;
-    pi0InvMass[1]   = 170;
-    etaInvMass[0]   = 500;
+    pi0InvMass[1]   = 160;
+    etaInvMass[0]   = 490;
     etaInvMass[1]   = 590;
     etapInvMass[0]  = 900;
     etapInvMass[1]  = 1010;
-    MisMass[0]      = 900;
-    MisMass[1]      = 955;
+    MisMass[0]      = 800;
+    MisMass[1]      = 1050;
 }
 
 GCut::~GCut()

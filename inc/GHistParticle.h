@@ -18,7 +18,9 @@ private:
     TH1D*   E;
     TH1D*   M;
     TH1D*   Theta;
+    TH1D*    CosTheta;
     TH1D*   Phi;
+
 protected:
 
 public:
@@ -28,6 +30,7 @@ public:
             void    Divide(const GHistParticle *hist);
             void    Add(const GHistParticle *hist, const Double_t scale);
     inline  void    Fill(const TLorentzVector& vec);
+    //inline Double_t CosTheta() const;
     virtual void    Write();
 };
 
@@ -39,8 +42,13 @@ void    GHistParticle::Fill(const TLorentzVector& vec)
     E->Fill(vec.E());
     M->Fill(vec.M());
     Theta->Fill(vec.Theta()*TMath::RadToDeg());
+    CosTheta->Fill(vec.CosTheta());
     Phi->Fill(vec.Phi()*TMath::RadToDeg());
 }
 
+//Double_t    GHistParticle::CosTheta()
+//{
+
+//}
 
 #endif

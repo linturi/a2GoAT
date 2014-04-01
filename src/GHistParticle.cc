@@ -12,6 +12,7 @@ GHistParticle::GHistParticle(TDirectory* _Dir)  :
     E   = new TH1D("E", "E", 2000, 0, 2000);
     M   = new TH1D("M", "Mass", 2500, -500, 2000);
     Theta   = new TH1D("Theta", "Theta", 180, 0, 180);
+    CosTheta =new TH1D(" CosTheta"," CosTheta", -1, 0, 1);
     Phi     = new TH1D("Phi", "Phi", 360, -180, 180);
 }
 
@@ -23,6 +24,7 @@ GHistParticle::~GHistParticle()
     if(E)  delete  E;
     if(M)  delete  M;
     if(Theta)  delete  Theta;
+    if( CosTheta) delete  CosTheta;
     if(Phi)  delete  Phi;
 }
 
@@ -34,6 +36,7 @@ void    GHistParticle::Divide(const GHistParticle *hist)
     E->Divide(hist->E);
     M->Divide(hist->M);
     Theta->Divide(hist->Theta);
+    CosTheta->Divide(hist-> CosTheta);
     Phi->Divide(hist->Phi);
 }
 
@@ -45,6 +48,7 @@ void    GHistParticle::Add(const GHistParticle* hist, const Double_t scale)
     E->Add(hist->E, scale);
     M->Add(hist->M, scale);
     Theta->Add(hist->Theta, scale);
+    CosTheta->Add(hist-> CosTheta);
     Phi->Add(hist->Phi, scale);
 }
 
@@ -57,5 +61,7 @@ void    GHistParticle::Write()
     E->Write();
     M->Write();
     Theta->Write();
+    CosTheta->Write();
     Phi->Write();
 }
+

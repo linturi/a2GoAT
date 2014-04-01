@@ -8,7 +8,14 @@ using namespace std;
 
 GPlot::GPlot()
 {
-
+bin0_low=200;
+bin0_hi=250;
+bin1_low=250;
+bin1_hi= 300;
+bin2_low=300;
+bin2_hi= 350;
+bin3_low=350;
+bin3_hi= 400;
 }
 
 GPlot::~GPlot()
@@ -24,15 +31,72 @@ void  GPlot::ProcessEvent()
         {
             if(tagger->GetNPrompt() == 1)
             {
-                pi0Hist->FillPromptTagger(trigger->GetHelicityBit(), tagger->GetMissingVector(tagger->GetPromptIndex(0)),tagger->GetTagged_t(tagger->GetPromptIndex(0)),tagger->GetPhotonBeam_E(tagger->GetPromptIndex(0)),tagger->GetTagged_ch(tagger->GetPromptIndex(0)));
-                pi0Hist->FillPromptMeson(trigger->GetHelicityBit(), pi0->Particle(0));
-                pi0Hist->FillPromptPhoton(trigger->GetHelicityBit(), photons->Particle(pi0->GetDaughterIndex(0,0)), photons->Particle(pi0->GetDaughterIndex(0,1)));
+                    pi0Hist->FillPromptTagger(trigger->GetHelicityBit(), tagger->GetMissingVector(tagger->GetPromptIndex(0)),tagger->GetTagged_t(tagger->GetPromptIndex(0)),tagger->GetPhotonBeam_E(tagger->GetPromptIndex(0)),tagger->GetTagged_ch(tagger->GetPromptIndex(0)));
+                    pi0Hist->FillPromptMeson(trigger->GetHelicityBit(), pi0->Particle(0));
+                    pi0Hist->FillPromptPhoton(trigger->GetHelicityBit(), photons->Particle(pi0->GetDaughterIndex(0,0)), photons->Particle(pi0->GetDaughterIndex(0,1)));
+
+
+           if(tagger->GetPhotonBeam_E(tagger->GetPromptIndex(0)) > bin0_low && tagger->GetPhotonBeam_E(tagger->GetPromptIndex(0)) < bin0_hi)
+            {
+                pi0Hist0->FillPromptTagger(trigger->GetHelicityBit(), tagger->GetMissingVector(tagger->GetPromptIndex(0)),tagger->GetTagged_t(tagger->GetPromptIndex(0)),tagger->GetPhotonBeam_E(tagger->GetPromptIndex(0)),tagger->GetTagged_ch(tagger->GetPromptIndex(0)));
+                pi0Hist0->FillPromptMeson(trigger->GetHelicityBit(), pi0->Particle(0));
+                pi0Hist0->FillPromptPhoton(trigger->GetHelicityBit(), photons->Particle(pi0->GetDaughterIndex(0,0)), photons->Particle(pi0->GetDaughterIndex(0,1)));
+            }
+           else if(tagger->GetPhotonBeam_E(tagger->GetPromptIndex(0)) > bin1_low && tagger->GetPhotonBeam_E(tagger->GetPromptIndex(0)) < bin1_hi)
+             {
+                 pi0Hist1->FillPromptTagger(trigger->GetHelicityBit(), tagger->GetMissingVector(tagger->GetPromptIndex(0)),tagger->GetTagged_t(tagger->GetPromptIndex(0)),tagger->GetPhotonBeam_E(tagger->GetPromptIndex(0)),tagger->GetTagged_ch(tagger->GetPromptIndex(0)));
+                 pi0Hist1->FillPromptMeson(trigger->GetHelicityBit(), pi0->Particle(0));
+                 pi0Hist1->FillPromptPhoton(trigger->GetHelicityBit(), photons->Particle(pi0->GetDaughterIndex(0,0)), photons->Particle(pi0->GetDaughterIndex(0,1)));
+             }
+
+           else if(tagger->GetPhotonBeam_E(tagger->GetPromptIndex(0)) > bin2_low && tagger->GetPhotonBeam_E(tagger->GetPromptIndex(0)) < bin2_hi)
+             {
+                 pi0Hist2->FillPromptTagger(trigger->GetHelicityBit(), tagger->GetMissingVector(tagger->GetPromptIndex(0)),tagger->GetTagged_t(tagger->GetPromptIndex(0)),tagger->GetPhotonBeam_E(tagger->GetPromptIndex(0)),tagger->GetTagged_ch(tagger->GetPromptIndex(0)));
+                 pi0Hist2->FillPromptMeson(trigger->GetHelicityBit(), pi0->Particle(0));
+                 pi0Hist2->FillPromptPhoton(trigger->GetHelicityBit(), photons->Particle(pi0->GetDaughterIndex(0,0)), photons->Particle(pi0->GetDaughterIndex(0,1)));
+             }
+
+           else if(tagger->GetPhotonBeam_E(tagger->GetPromptIndex(0)) > bin3_low && tagger->GetPhotonBeam_E(tagger->GetPromptIndex(0)) < bin3_hi)
+             {
+                 pi0Hist2->FillPromptTagger(trigger->GetHelicityBit(), tagger->GetMissingVector(tagger->GetPromptIndex(0)),tagger->GetTagged_t(tagger->GetPromptIndex(0)),tagger->GetPhotonBeam_E(tagger->GetPromptIndex(0)),tagger->GetTagged_ch(tagger->GetPromptIndex(0)));
+                 pi0Hist2->FillPromptMeson(trigger->GetHelicityBit(), pi0->Particle(0));
+                 pi0Hist2->FillPromptPhoton(trigger->GetHelicityBit(), photons->Particle(pi0->GetDaughterIndex(0,0)), photons->Particle(pi0->GetDaughterIndex(0,1)));
+             }
+
             }
             if(tagger->GetNRand() == 1)
-            {
+             {
                 pi0Hist->FillRandTagger(trigger->GetHelicityBit(), tagger->GetMissingVector(tagger->GetRandIndex(0)),tagger->GetTagged_t(tagger->GetRandIndex(0)),tagger->GetPhotonBeam_E(tagger->GetRandIndex(0)),tagger->GetTagged_ch(tagger->GetRandIndex(0)));
                 pi0Hist->FillRandMeson(trigger->GetHelicityBit(), pi0->Particle(0));
                 pi0Hist->FillRandPhoton(trigger->GetHelicityBit(), photons->Particle(pi0->GetDaughterIndex(0,0)), photons->Particle(pi0->GetDaughterIndex(0,1)));
+
+
+           if(tagger->GetPhotonBeam_E(tagger->GetRandIndex(0)) > bin0_low && tagger->GetPhotonBeam_E(tagger->GetRandIndex(0)) < bin0_hi)
+            {
+                pi0Hist0->FillRandTagger(trigger->GetHelicityBit(), tagger->GetMissingVector(tagger->GetRandIndex(0)),tagger->GetTagged_t(tagger->GetRandIndex(0)),tagger->GetPhotonBeam_E(tagger->GetRandIndex(0)),tagger->GetTagged_ch(tagger->GetRandIndex(0)));
+                pi0Hist0->FillRandMeson(trigger->GetHelicityBit(), pi0->Particle(0));
+                pi0Hist0->FillRandPhoton(trigger->GetHelicityBit(), photons->Particle(pi0->GetDaughterIndex(0,0)), photons->Particle(pi0->GetDaughterIndex(0,1)));
+            }
+
+            else if(tagger->GetPhotonBeam_E(tagger->GetRandIndex(0)) > bin1_low && tagger->GetPhotonBeam_E(tagger->GetRandIndex(0)) < bin1_hi)
+            {
+                pi0Hist1->FillRandTagger(trigger->GetHelicityBit(), tagger->GetMissingVector(tagger->GetRandIndex(0)),tagger->GetTagged_t(tagger->GetRandIndex(0)),tagger->GetPhotonBeam_E(tagger->GetRandIndex(0)),tagger->GetTagged_ch(tagger->GetRandIndex(0)));
+                pi0Hist1->FillRandMeson(trigger->GetHelicityBit(), pi0->Particle(0));
+                pi0Hist1->FillRandPhoton(trigger->GetHelicityBit(), photons->Particle(pi0->GetDaughterIndex(0,0)), photons->Particle(pi0->GetDaughterIndex(0,1)));
+            }
+           else if(tagger->GetPhotonBeam_E(tagger->GetRandIndex(0)) > bin2_low && tagger->GetPhotonBeam_E(tagger->GetRandIndex(0)) < bin2_hi)
+           {
+               pi0Hist2->FillRandTagger(trigger->GetHelicityBit(), tagger->GetMissingVector(tagger->GetRandIndex(0)),tagger->GetTagged_t(tagger->GetRandIndex(0)),tagger->GetPhotonBeam_E(tagger->GetRandIndex(0)),tagger->GetTagged_ch(tagger->GetRandIndex(0)));
+               pi0Hist2->FillRandMeson(trigger->GetHelicityBit(), pi0->Particle(0));
+               pi0Hist2->FillRandPhoton(trigger->GetHelicityBit(), photons->Particle(pi0->GetDaughterIndex(0,0)), photons->Particle(pi0->GetDaughterIndex(0,1)));
+           }
+
+           else if(tagger->GetPhotonBeam_E(tagger->GetRandIndex(0)) > bin3_low && tagger->GetPhotonBeam_E(tagger->GetRandIndex(0)) < bin3_hi)
+           {
+               pi0Hist3->FillRandTagger(trigger->GetHelicityBit(), tagger->GetMissingVector(tagger->GetRandIndex(0)),tagger->GetTagged_t(tagger->GetRandIndex(0)),tagger->GetPhotonBeam_E(tagger->GetRandIndex(0)),tagger->GetTagged_ch(tagger->GetRandIndex(0)));
+               pi0Hist3->FillRandMeson(trigger->GetHelicityBit(), pi0->Particle(0));
+               pi0Hist3->FillRandPhoton(trigger->GetHelicityBit(), photons->Particle(pi0->GetDaughterIndex(0,0)), photons->Particle(pi0->GetDaughterIndex(0,1)));
+           }
             }
         }
 
@@ -151,12 +215,28 @@ Bool_t  GPlot::Process(const char* input_filename, const char* output_filename)
     file_out->cd();
     gDirectory->mkdir("pi0");
     file_out->cd();
+    gDirectory->mkdir("pi0_0");
+    file_out->cd();
+    gDirectory->mkdir("pi0_1");
+    file_out->cd();
+    gDirectory->mkdir("pi0_2");
+    file_out->cd();
+    gDirectory->mkdir("pi0_3");
+    file_out->cd();
     gDirectory->mkdir("eta");
    // file_out->cd();
     //gDirectory->mkdir("etap");
 
     file_out->cd();
     pi0Hist = new GHistHelTaggedMeson(gDirectory->GetDirectory("pi0"));
+    file_out->cd();
+    pi0Hist0 = new GHistHelTaggedMeson(gDirectory->GetDirectory("pi0_0"));
+    file_out->cd();
+    pi0Hist1 = new GHistHelTaggedMeson(gDirectory->GetDirectory("pi0_1"));
+    file_out->cd();
+    pi0Hist2 = new GHistHelTaggedMeson(gDirectory->GetDirectory("pi0_2"));
+    file_out->cd();
+    pi0Hist3 = new GHistHelTaggedMeson(gDirectory->GetDirectory("pi0_3"));
     file_out->cd();
     etaHist = new GHistHelTaggedMeson(gDirectory->GetDirectory("eta"));
     //file_out->cd();
@@ -165,6 +245,10 @@ Bool_t  GPlot::Process(const char* input_filename, const char* output_filename)
     TraverseEntries(0, pi0->GetNEntries()+1);
 
     pi0Hist->Write();
+    pi0Hist0->Write();
+    pi0Hist1->Write();
+    pi0Hist2->Write();
+    pi0Hist3->Write();
     etaHist->Write();
     //etapHist->Write();
     /*hist->Write(&taggerTime);

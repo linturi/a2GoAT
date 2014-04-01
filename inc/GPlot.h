@@ -19,10 +19,15 @@ private:
     TFile*  file;
 
     GHistHelTaggedMeson*  pi0Hist;
+    GHistHelTaggedMeson*  pi0Hist0;
+    GHistHelTaggedMeson*  pi0Hist1;
+    GHistHelTaggedMeson*  pi0Hist2;
+    GHistHelTaggedMeson*  pi0Hist3;
     GHistHelTaggedMeson*  etaHist;
     GHistTagged3Pi0* _3pi0Hist;
     //GHistTaggedEta*  etaHist;
     GHistTaggedEtap* etapHist;
+    Int_t bin0_low, bin0_hi,bin1_low, bin1_hi,bin2_low, bin2_hi, bin3_low, bin3_hi;
 
 protected:
 

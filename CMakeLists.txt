@@ -73,6 +73,7 @@ add_executable(MyGoATPlot
    inc/GTreeTrigger.h
    inc/GTreeManager.h
    inc/GPlotTime.h
+   inc/GPlotProton.h
    inc/GHist.h
    inc/GHistParticle.h
    inc/GHistTaggedParticle.h
@@ -91,6 +92,7 @@ add_executable(MyGoATPlot
    src/GTreeTrigger.cc
    src/GTreeManager.cc
    src/GPlotTime.cc
+   src/GPlotProton.cc
    src/GHist.cc
    src/GHistParticle.cc
    src/GHistTaggedParticle.cc

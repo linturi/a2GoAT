@@ -6,6 +6,7 @@
 #include "GPlotTime.h"
 #include "GPlotCut.h"
 #include "GPlot.h"
+#include "GPlotProton.h"
 
 using namespace std;
 
@@ -37,10 +38,12 @@ void* start(void* arguments)
 
     if(strcmp(arg->type, "particle") == 0 || strcmp(arg->type, "Particle") == 0 || strcmp(arg->type, "PARTICLE") == 0 || strcmp(arg->type, "time") == 0 || strcmp(arg->type, "Time") == 0 || strcmp(arg->type, "TIME") == 0)
         tree    = new GPlotTime();
-    if(strcmp(arg->type, "cut") == 0 || strcmp(arg->type, "Cut") == 0 || strcmp(arg->type, "CUT") == 0)
+    else if(strcmp(arg->type, "cut") == 0 || strcmp(arg->type, "Cut") == 0 || strcmp(arg->type, "CUT") == 0)
         tree    = new GPlotCut();
     if(strcmp(arg->type, "all") == 0 || strcmp(arg->type, "hist") == 0)
         tree    = new GPlot();
+    else if(strcmp(arg->type, "proton") == 0 || strcmp(arg->type, "Proton") == 0 || strcmp(arg->type, "PROTON") == 0)
+        tree    = new GPlotProton();
     else
     {
         cout << "Reconstruction type " << arg->type <<" is unknown." << endl;

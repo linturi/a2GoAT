@@ -26,7 +26,8 @@ private:
     GHistTagged3Pi0* _3pi0Hist;
     //GHistTaggedEta*  etaHist;
     GHistTaggedEtap* etapHist;
-    Int_t bin0_low, bin0_hi,bin1_low, bin1_hi,bin2_low, bin2_hi, bin3_low, bin3_hi;
+    Int_t bin0_low, bin0_hi,bin1_low, bin1_hi,bin2_low, bin2_hi, bin3_low, bin3_hi, bin4_low, bin4_hi, bin5_low, bin5_hi;
+    Int_t bin6_low, bin6_hi,bin7_low, bin7_hi;
 
 protected:
 

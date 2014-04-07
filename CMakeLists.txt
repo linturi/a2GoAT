@@ -74,7 +74,12 @@ add_executable(MyGoATPlot
    inc/GTreeManager.h
    inc/GPlotTime.h
    inc/GHist.h
+   inc/GHistParticle.h
+   inc/GHistTaggedParticle.h
+   inc/GHistTaggedMeson.h
+   inc/GHistHelTaggedMeson.h
    inc/GPlotCut.h
+   inc/GPlot.h
    inc/MyGoAT.h
    src/GTree.cc
    src/GTreeRawEvent.cc
@@ -87,7 +92,12 @@ add_executable(MyGoATPlot
    src/GTreeManager.cc
    src/GPlotTime.cc
    src/GHist.cc
+   src/GHistParticle.cc
+   src/GHistTaggedParticle.cc
+   src/GHistTaggedMeson.cc
+   src/GHistHelTaggedMeson.cc
    src/GPlotCut.cc
+   src/GPlot.cc
    src/MyGoATPlot.cc
    )
 target_link_libraries(MyGoATPlot ${ROOT_LIBRARIES})

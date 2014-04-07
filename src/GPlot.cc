@@ -8,14 +8,12 @@ using namespace std;
 
 GPlot::GPlot()
 {
-bin0_low=200;
-bin0_hi=250;
-bin1_low=250;
-bin1_hi= 300;
-bin2_low=300;
-bin2_hi= 350;
-bin3_low=350;
-bin3_hi= 400;
+bin0_low=1110; bin0_hi=1140; bin1_low=210; bin1_hi= 240; bin2_low=240;
+bin2_hi= 270; bin3_low=270; bin3_hi= 300; bin4_low=300;bin4_hi=330;
+bin5_low=330; bin5_hi=360; bin6_low=360; bin6_hi=390; bin7_low=390;
+bin7_hi=420;
+
+
 }
 
 GPlot::~GPlot()
@@ -57,9 +55,9 @@ void  GPlot::ProcessEvent()
 
            else if(tagger->GetPhotonBeam_E(tagger->GetPromptIndex(0)) > bin3_low && tagger->GetPhotonBeam_E(tagger->GetPromptIndex(0)) < bin3_hi)
              {
-                 pi0Hist2->FillPromptTagger(trigger->GetHelicityBit(), tagger->GetMissingVector(tagger->GetPromptIndex(0)),tagger->GetTagged_t(tagger->GetPromptIndex(0)),tagger->GetPhotonBeam_E(tagger->GetPromptIndex(0)),tagger->GetTagged_ch(tagger->GetPromptIndex(0)));
-                 pi0Hist2->FillPromptMeson(trigger->GetHelicityBit(), pi0->Particle(0));
-                 pi0Hist2->FillPromptPhoton(trigger->GetHelicityBit(), photons->Particle(pi0->GetDaughterIndex(0,0)), photons->Particle(pi0->GetDaughterIndex(0,1)));
+                 pi0Hist3->FillPromptTagger(trigger->GetHelicityBit(), tagger->GetMissingVector(tagger->GetPromptIndex(0)),tagger->GetTagged_t(tagger->GetPromptIndex(0)),tagger->GetPhotonBeam_E(tagger->GetPromptIndex(0)),tagger->GetTagged_ch(tagger->GetPromptIndex(0)));
+                 pi0Hist3->FillPromptMeson(trigger->GetHelicityBit(), pi0->Particle(0));
+                 pi0Hist3->FillPromptPhoton(trigger->GetHelicityBit(), photons->Particle(pi0->GetDaughterIndex(0,0)), photons->Particle(pi0->GetDaughterIndex(0,1)));
              }
 
             }
@@ -114,7 +112,7 @@ void  GPlot::ProcessEvent()
                 etaHist->FillRandPhoton(trigger->GetHelicityBit(), photons->Particle(eta->GetDaughterIndex(0,0)), photons->Particle(eta->GetDaughterIndex(0,1)));
             }
         }
-        /*else if(etap->GetNParticles() == 1)
+       /*else if(etap->GetNParticles() == 1)
         {
             if(tagger->GetNPrompt() == 1)
             {

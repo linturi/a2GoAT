@@ -6,7 +6,7 @@ GHistTaggedParticleWindow::GHistTaggedParticleWindow(TDirectory* _Dir) :
 {
     dir->cd();
     taggerTime  = new TH1D("TaggerTimeOR", "TaggerTimeOR", 200, -50, 50);
-    taggerE     = new TH1D("TaggerEnergy", "TaggerEnergy", 1500, 0, 1650);
+    taggerE     = new TH1D("TaggerEnergy", "TaggerEnergy", 500, 0, 1500);
     taggerCh    = new TH1I("TaggerChannel", "TaggerChannel", 352, 0, 351);
     dir->mkdir("particle");
     dir->cd();

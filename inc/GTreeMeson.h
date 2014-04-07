@@ -9,6 +9,7 @@
 #define MASS_ETA    547.5830
 #define MASS_ETAP   957.7800
 #define MASS_PROTON 938.272046
+//#define MASS_CARBON 11174.86
 
 
 class  GTreeMeson   : public GTreeParticle

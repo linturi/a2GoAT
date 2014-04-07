@@ -44,7 +44,7 @@ void  GParticleReconstruction::ProcessEvent()
         if(!Trigger())
             return;
     }
-    if(rawEvent->GetNCB() != 2 && rawEvent->GetNCB() != 6 && rawEvent->GetNCB() != 10)
+    if(rawEvent->GetNCB() != 2 && rawEvent->GetNCB() != 3)
         return;
     if(rawEvent->GetNTAPS()>1)
         return;
@@ -75,17 +75,45 @@ void  GParticleReconstruction::ProcessEvent()
 
     photons->Clear();
     protons->Clear();
-    for(Int_t i=0; i<rawEvent->GetNParticles(); i++)
+    if(rawEvent->GetNParticles()==2)
     {
-        if(rawEvent->GetApparatus(i) == GTreeRawEvent::APPARATUS_CB)
+        for(Int_t i=0; i<rawEvent->GetNParticles(); i++)
         {
             CBTimeAfterCut->Fill(rawEvent->GetTime(i));
             photons->AddParticle(rawEvent->GetVector(i), i);
         }
-        if(rawEvent->GetApparatus(i) == GTreeRawEvent::APPARATUS_TAPS)
+    }
+    else
+    {
+        Double_t ChiSq[6];
+        ChiSq[0]    = (rawEvent->GetVector(1) + rawEvent->GetVector(1)).M() - MASS_PI0 / 22; ChiSq[0] *= ChiSq[0];
+        ChiSq[1]    = (rawEvent->GetVector(0) + rawEvent->GetVector(2)).M() - MASS_PI0 / 22; ChiSq[1] *= ChiSq[1];
+        ChiSq[2]    = (rawEvent->GetVector(0) + rawEvent->GetVector(1)).M() - MASS_PI0 / 22; ChiSq[2] *= ChiSq[2];
+
+        ChiSq[3]    = (rawEvent->GetVector(1) + rawEvent->GetVector(1)).M() - MASS_ETA / 40; ChiSq[3] *= ChiSq[3];
+        ChiSq[4]    = (rawEvent->GetVector(0) + rawEvent->GetVector(2)).M() - MASS_ETA / 40; ChiSq[4] *= ChiSq[4];
+        ChiSq[5]    = (rawEvent->GetVector(0) + rawEvent->GetVector(1)).M() - MASS_ETA / 40; ChiSq[5] *= ChiSq[5];
+
+        Double_t    min = ChiSq[0];
+        Double_t    min_index = 0;
+        for(int i=1; i<6; i++)
         {
-            TAPSTimeAfterCut->Fill(rawEvent->GetTime(i));
-            protons->AddParticle(rawEvent->GetVector(i, 938.272046), i);
+            if(ChiSq[i]<min)
+            {
+                min = ChiSq[i];
+                min_index = i;
+            }
+        }
+
+        TAPSTimeAfterCut->Fill(rawEvent->GetTime(min_index));
+        protons->AddParticle(rawEvent->GetVector(min_index), min_index);
+        for(int i=0; i<3; i++)
+        {
+            if(i!=min_index)
+            {
+                CBTimeAfterCut->Fill(rawEvent->GetTime(i));
+                photons->AddParticle(rawEvent->GetVector(i), i);
+            }
         }
     }
     photons->Fill();

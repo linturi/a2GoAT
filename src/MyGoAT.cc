@@ -19,7 +19,8 @@ void    PrintHelp()
 
     cout << endl;
     cout << "example:" << endl;
-    cout << "MyGoAT particle <inputFile> <outputFile>" << endl;
+    cout << "MyGoAT particle <inputFile> <outputFile> <CBTimeCutMin>" << endl;
+    cout << "MyGoAT meson <inputFile> <outputFile>" << endl;
 }
 
 

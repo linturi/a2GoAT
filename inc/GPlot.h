@@ -22,6 +22,7 @@ private:
     GHistHelTaggedMeson*  pi0Hist1;
     GHistHelTaggedMeson*  pi0Hist2;
     GHistHelTaggedMeson*  pi0Hist3;
+    GHistHelTaggedMeson*  pi0Hist4;
     GHistHelTaggedMeson*  etaHist;
     GHistTagged3Pi0* _3pi0Hist;
     //GHistTaggedEta*  etaHist;

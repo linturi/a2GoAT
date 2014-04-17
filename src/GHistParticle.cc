@@ -11,8 +11,8 @@ GHistParticle::GHistParticle(TDirectory* _Dir)  :
     Pz  = new TH1D("Pz", "Pz", 500, -500, 2000);
     E   = new TH1D("E", "E", 500, 0, 2000);
     M   = new TH1D("M", "Mass", 500, -500, 2000);
-    Theta   = new TH1D("Theta", "Theta", 90, 0, 180);
-    CosTheta =new TH1D(" CosTheta"," CosTheta", 90, -1, 1);
+    Theta   = new TH1D("Theta", "Theta", 45, 0, 180);
+    CosTheta =new TH1D("CosTheta","CosTheta", 45, -1, 1);
     Phi     = new TH1D("Phi", "Phi", 180, -180, 180);
 }
 
@@ -48,7 +48,7 @@ void    GHistParticle::Add(const GHistParticle* hist, const Double_t scale)
     E->Add(hist->E, scale);
     M->Add(hist->M, scale);
     Theta->Add(hist->Theta, scale);
-    CosTheta->Add(hist-> CosTheta);
+    CosTheta->Add(hist-> CosTheta, scale);
     Phi->Add(hist->Phi, scale);
 }
 

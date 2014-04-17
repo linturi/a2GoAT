@@ -40,7 +40,7 @@ void* start(void* arguments)
         tree    = new GPlotTime();
     else if(strcmp(arg->type, "cut") == 0 || strcmp(arg->type, "Cut") == 0 || strcmp(arg->type, "CUT") == 0)
         tree    = new GPlotCut();
-    if(strcmp(arg->type, "all") == 0 || strcmp(arg->type, "hist") == 0)
+    else if(strcmp(arg->type, "all") == 0 || strcmp(arg->type, "hist") == 0)
         tree    = new GPlot();
     else if(strcmp(arg->type, "proton") == 0 || strcmp(arg->type, "Proton") == 0 || strcmp(arg->type, "PROTON") == 0)
         tree    = new GPlotProton();

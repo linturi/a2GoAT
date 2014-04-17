@@ -8,11 +8,13 @@ using namespace std;
 
 GPlot::GPlot()
 {
-bin0_low=200; bin0_hi=250; bin1_low=250; bin1_hi= 300; bin2_low=300;
-bin2_hi= 350; bin3_low=350; bin3_hi= 400; bin4_low=400;bin4_hi=450;
-bin5_low=450; bin5_hi=500; bin6_low=500; bin6_hi=550; bin7_low=550;
-bin7_hi=600;
-
+ //pi0
+bin0_low=210; bin0_hi=240; bin1_low=240; bin1_hi= 270; bin2_low=270;bin2_hi= 300; bin3_low=300; bin3_hi= 330;
+bin4_low=330;bin4_hi=360;bin5_low=360; bin5_hi=390; bin6_low=390; bin6_hi=420; bin7_low=420;bin7_hi=450;
+//Eta
+Ebin0_low=710; Ebin0_hi=740; Ebin1_low=740; Ebin1_hi= 770; Ebin2_low=770;Ebin2_hi= 800; Ebin3_low=800; Ebin3_hi= 850;
+Ebin4_low=850;Ebin4_hi=900;Ebin5_low=900; Ebin5_hi=950; Ebin6_low=950; Ebin6_hi=1000; Ebin7_low=1000;Ebin7_hi=1050;
+Ebin8_low=1050;Ebin8_hi=1100;Ebin9_low=1100; Ebin9_hi=1200; Ebin10_low=1200; Ebin10_hi=1300; Ebin11_low=1300;Ebin11_hi=1400;
 
 }
 
@@ -67,7 +69,29 @@ void  GPlot::ProcessEvent()
                  pi0Hist4->FillPromptPhoton(trigger->GetHelicityBit(), photons->Particle(pi0->GetDaughterIndex(0,0)), photons->Particle(pi0->GetDaughterIndex(0,1)));
              }
 
+           else if(tagger->GetPhotonBeam_E(tagger->GetPromptIndex(0)) > bin5_low && tagger->GetPhotonBeam_E(tagger->GetPromptIndex(0)) < bin5_hi)
+             {
+                 pi0Hist5->FillPromptTagger(trigger->GetHelicityBit(), tagger->GetMissingVector(tagger->GetPromptIndex(0)),tagger->GetTagged_t(tagger->GetPromptIndex(0)),tagger->GetPhotonBeam_E(tagger->GetPromptIndex(0)),tagger->GetTagged_ch(tagger->GetPromptIndex(0)));
+                 pi0Hist5->FillPromptMeson(trigger->GetHelicityBit(), pi0->Particle(0));
+                 pi0Hist5->FillPromptPhoton(trigger->GetHelicityBit(), photons->Particle(pi0->GetDaughterIndex(0,0)), photons->Particle(pi0->GetDaughterIndex(0,1)));
+             }
+
+           else if(tagger->GetPhotonBeam_E(tagger->GetPromptIndex(0)) > bin6_low && tagger->GetPhotonBeam_E(tagger->GetPromptIndex(0)) < bin6_hi)
+             {
+                 pi0Hist6->FillPromptTagger(trigger->GetHelicityBit(), tagger->GetMissingVector(tagger->GetPromptIndex(0)),tagger->GetTagged_t(tagger->GetPromptIndex(0)),tagger->GetPhotonBeam_E(tagger->GetPromptIndex(0)),tagger->GetTagged_ch(tagger->GetPromptIndex(0)));
+                 pi0Hist6->FillPromptMeson(trigger->GetHelicityBit(), pi0->Particle(0));
+                 pi0Hist6->FillPromptPhoton(trigger->GetHelicityBit(), photons->Particle(pi0->GetDaughterIndex(0,0)), photons->Particle(pi0->GetDaughterIndex(0,1)));
+             }
+
+           else if(tagger->GetPhotonBeam_E(tagger->GetPromptIndex(0)) > bin7_low && tagger->GetPhotonBeam_E(tagger->GetPromptIndex(0)) < bin7_hi)
+             {
+                 pi0Hist7->FillPromptTagger(trigger->GetHelicityBit(), tagger->GetMissingVector(tagger->GetPromptIndex(0)),tagger->GetTagged_t(tagger->GetPromptIndex(0)),tagger->GetPhotonBeam_E(tagger->GetPromptIndex(0)),tagger->GetTagged_ch(tagger->GetPromptIndex(0)));
+                 pi0Hist7->FillPromptMeson(trigger->GetHelicityBit(), pi0->Particle(0));
+                 pi0Hist7->FillPromptPhoton(trigger->GetHelicityBit(), photons->Particle(pi0->GetDaughterIndex(0,0)), photons->Particle(pi0->GetDaughterIndex(0,1)));
+             }
+
             }
+            //======================================================================================================================================================================================
             if(tagger->GetNRand() == 1)
              {
                 pi0Hist->FillRandTagger(trigger->GetHelicityBit(), tagger->GetMissingVector(tagger->GetRandIndex(0)),tagger->GetTagged_t(tagger->GetRandIndex(0)),tagger->GetPhotonBeam_E(tagger->GetRandIndex(0)),tagger->GetTagged_ch(tagger->GetRandIndex(0)));
@@ -108,24 +132,210 @@ void  GPlot::ProcessEvent()
                pi0Hist4->FillRandMeson(trigger->GetHelicityBit(), pi0->Particle(0));
                pi0Hist4->FillRandPhoton(trigger->GetHelicityBit(), photons->Particle(pi0->GetDaughterIndex(0,0)), photons->Particle(pi0->GetDaughterIndex(0,1)));
            }
+           else if(tagger->GetPhotonBeam_E(tagger->GetRandIndex(0)) > bin5_low && tagger->GetPhotonBeam_E(tagger->GetRandIndex(0)) < bin5_hi)
+           {
+               pi0Hist5->FillRandTagger(trigger->GetHelicityBit(), tagger->GetMissingVector(tagger->GetRandIndex(0)),tagger->GetTagged_t(tagger->GetRandIndex(0)),tagger->GetPhotonBeam_E(tagger->GetRandIndex(0)),tagger->GetTagged_ch(tagger->GetRandIndex(0)));
+               pi0Hist5->FillRandMeson(trigger->GetHelicityBit(), pi0->Particle(0));
+               pi0Hist5->FillRandPhoton(trigger->GetHelicityBit(), photons->Particle(pi0->GetDaughterIndex(0,0)), photons->Particle(pi0->GetDaughterIndex(0,1)));
+           }
+           else if(tagger->GetPhotonBeam_E(tagger->GetRandIndex(0)) > bin6_low && tagger->GetPhotonBeam_E(tagger->GetRandIndex(0)) < bin6_hi)
+           {
+               pi0Hist6->FillRandTagger(trigger->GetHelicityBit(), tagger->GetMissingVector(tagger->GetRandIndex(0)),tagger->GetTagged_t(tagger->GetRandIndex(0)),tagger->GetPhotonBeam_E(tagger->GetRandIndex(0)),tagger->GetTagged_ch(tagger->GetRandIndex(0)));
+               pi0Hist6->FillRandMeson(trigger->GetHelicityBit(), pi0->Particle(0));
+               pi0Hist6->FillRandPhoton(trigger->GetHelicityBit(), photons->Particle(pi0->GetDaughterIndex(0,0)), photons->Particle(pi0->GetDaughterIndex(0,1)));
+           }
+           else if(tagger->GetPhotonBeam_E(tagger->GetRandIndex(0)) > bin7_low && tagger->GetPhotonBeam_E(tagger->GetRandIndex(0)) < bin7_hi)
+           {
+               pi0Hist7->FillRandTagger(trigger->GetHelicityBit(), tagger->GetMissingVector(tagger->GetRandIndex(0)),tagger->GetTagged_t(tagger->GetRandIndex(0)),tagger->GetPhotonBeam_E(tagger->GetRandIndex(0)),tagger->GetTagged_ch(tagger->GetRandIndex(0)));
+               pi0Hist7->FillRandMeson(trigger->GetHelicityBit(), pi0->Particle(0));
+               pi0Hist7->FillRandPhoton(trigger->GetHelicityBit(), photons->Particle(pi0->GetDaughterIndex(0,0)), photons->Particle(pi0->GetDaughterIndex(0,1)));
+           }
             }
         }
-
-        else if(eta->GetNParticles() == 1)
+//======================================================================================================================================================
+       else if(eta->GetNParticles() == 1)
         {
             if(tagger->GetNPrompt() == 1)
             {
-                etaHist->FillPromptTagger(trigger->GetHelicityBit(),tagger->GetMissingVector(tagger->GetPromptIndex(0)),tagger->GetTagged_t(tagger->GetPromptIndex(0)),tagger->GetPhotonBeam_E(tagger->GetPromptIndex(0)),tagger->GetTagged_ch(tagger->GetPromptIndex(0)));
-                etaHist->FillPromptMeson(trigger->GetHelicityBit(), eta->Particle(0));
-                etaHist->FillPromptPhoton(trigger->GetHelicityBit(), photons->Particle(eta->GetDaughterIndex(0,0)), photons->Particle(eta->GetDaughterIndex(0,1)));
+                  etaHist->FillPromptTagger(trigger->GetHelicityBit(), tagger->GetMissingVector(tagger->GetPromptIndex(0)),tagger->GetTagged_t(tagger->GetPromptIndex(0)),tagger->GetPhotonBeam_E(tagger->GetPromptIndex(0)),tagger->GetTagged_ch(tagger->GetPromptIndex(0)));
+                  etaHist->FillPromptMeson(trigger->GetHelicityBit(), eta->Particle(0));
+                  etaHist->FillPromptPhoton(trigger->GetHelicityBit(), photons->Particle(eta->GetDaughterIndex(0,0)), photons->Particle(eta->GetDaughterIndex(0,1)));
+
+
+           if(tagger->GetPhotonBeam_E(tagger->GetPromptIndex(0)) > Ebin0_low && tagger->GetPhotonBeam_E(tagger->GetPromptIndex(0)) < Ebin0_hi)
+            {
+              etaHist0->FillPromptTagger(trigger->GetHelicityBit(), tagger->GetMissingVector(tagger->GetPromptIndex(0)),tagger->GetTagged_t(tagger->GetPromptIndex(0)),tagger->GetPhotonBeam_E(tagger->GetPromptIndex(0)),tagger->GetTagged_ch(tagger->GetPromptIndex(0)));
+              etaHist0->FillPromptMeson(trigger->GetHelicityBit(), eta->Particle(0));
+              etaHist0->FillPromptPhoton(trigger->GetHelicityBit(), photons->Particle(eta->GetDaughterIndex(0,0)), photons->Particle(eta->GetDaughterIndex(0,1)));
             }
+           else if(tagger->GetPhotonBeam_E(tagger->GetPromptIndex(0)) > Ebin1_low && tagger->GetPhotonBeam_E(tagger->GetPromptIndex(0)) < Ebin1_hi)
+             {
+               etaHist1->FillPromptTagger(trigger->GetHelicityBit(), tagger->GetMissingVector(tagger->GetPromptIndex(0)),tagger->GetTagged_t(tagger->GetPromptIndex(0)),tagger->GetPhotonBeam_E(tagger->GetPromptIndex(0)),tagger->GetTagged_ch(tagger->GetPromptIndex(0)));
+               etaHist1->FillPromptMeson(trigger->GetHelicityBit(), eta->Particle(0));
+               etaHist1->FillPromptPhoton(trigger->GetHelicityBit(), photons->Particle(eta->GetDaughterIndex(0,0)), photons->Particle(eta->GetDaughterIndex(0,1)));
+             }
+
+           else if(tagger->GetPhotonBeam_E(tagger->GetPromptIndex(0)) > Ebin2_low && tagger->GetPhotonBeam_E(tagger->GetPromptIndex(0)) < Ebin2_hi)
+             {
+               etaHist2->FillPromptTagger(trigger->GetHelicityBit(), tagger->GetMissingVector(tagger->GetPromptIndex(0)),tagger->GetTagged_t(tagger->GetPromptIndex(0)),tagger->GetPhotonBeam_E(tagger->GetPromptIndex(0)),tagger->GetTagged_ch(tagger->GetPromptIndex(0)));
+               etaHist2->FillPromptMeson(trigger->GetHelicityBit(), eta->Particle(0));
+               etaHist2->FillPromptPhoton(trigger->GetHelicityBit(), photons->Particle(eta->GetDaughterIndex(0,0)), photons->Particle(eta->GetDaughterIndex(0,1)));
+             }
+
+           else if(tagger->GetPhotonBeam_E(tagger->GetPromptIndex(0)) > Ebin3_low && tagger->GetPhotonBeam_E(tagger->GetPromptIndex(0)) < Ebin3_hi)
+             {
+               etaHist3->FillPromptTagger(trigger->GetHelicityBit(), tagger->GetMissingVector(tagger->GetPromptIndex(0)),tagger->GetTagged_t(tagger->GetPromptIndex(0)),tagger->GetPhotonBeam_E(tagger->GetPromptIndex(0)),tagger->GetTagged_ch(tagger->GetPromptIndex(0)));
+               etaHist3->FillPromptMeson(trigger->GetHelicityBit(), eta->Particle(0));
+               etaHist3->FillPromptPhoton(trigger->GetHelicityBit(), photons->Particle(eta->GetDaughterIndex(0,0)), photons->Particle(eta->GetDaughterIndex(0,1)));
+             }
+
+           else if(tagger->GetPhotonBeam_E(tagger->GetPromptIndex(0)) > Ebin4_low && tagger->GetPhotonBeam_E(tagger->GetPromptIndex(0)) < Ebin4_hi)
+             {
+               etaHist4->FillPromptTagger(trigger->GetHelicityBit(), tagger->GetMissingVector(tagger->GetPromptIndex(0)),tagger->GetTagged_t(tagger->GetPromptIndex(0)),tagger->GetPhotonBeam_E(tagger->GetPromptIndex(0)),tagger->GetTagged_ch(tagger->GetPromptIndex(0)));
+               etaHist4->FillPromptMeson(trigger->GetHelicityBit(), eta->Particle(0));
+               etaHist4->FillPromptPhoton(trigger->GetHelicityBit(), photons->Particle(eta->GetDaughterIndex(0,0)), photons->Particle(eta->GetDaughterIndex(0,1)));
+             }
+
+           else if(tagger->GetPhotonBeam_E(tagger->GetPromptIndex(0)) > Ebin5_low && tagger->GetPhotonBeam_E(tagger->GetPromptIndex(0)) < Ebin5_hi)
+             {
+               etaHist5->FillPromptTagger(trigger->GetHelicityBit(), tagger->GetMissingVector(tagger->GetPromptIndex(0)),tagger->GetTagged_t(tagger->GetPromptIndex(0)),tagger->GetPhotonBeam_E(tagger->GetPromptIndex(0)),tagger->GetTagged_ch(tagger->GetPromptIndex(0)));
+               etaHist5->FillPromptMeson(trigger->GetHelicityBit(), eta->Particle(0));
+               etaHist5->FillPromptPhoton(trigger->GetHelicityBit(), photons->Particle(eta->GetDaughterIndex(0,0)), photons->Particle(eta->GetDaughterIndex(0,1)));
+             }
+
+           else if(tagger->GetPhotonBeam_E(tagger->GetPromptIndex(0)) > Ebin6_low && tagger->GetPhotonBeam_E(tagger->GetPromptIndex(0)) < Ebin6_hi)
+             {
+               etaHist6->FillPromptTagger(trigger->GetHelicityBit(), tagger->GetMissingVector(tagger->GetPromptIndex(0)),tagger->GetTagged_t(tagger->GetPromptIndex(0)),tagger->GetPhotonBeam_E(tagger->GetPromptIndex(0)),tagger->GetTagged_ch(tagger->GetPromptIndex(0)));
+               etaHist6->FillPromptMeson(trigger->GetHelicityBit(), eta->Particle(0));
+               etaHist6->FillPromptPhoton(trigger->GetHelicityBit(), photons->Particle(eta->GetDaughterIndex(0,0)), photons->Particle(eta->GetDaughterIndex(0,1)));
+             }
+
+           else if(tagger->GetPhotonBeam_E(tagger->GetPromptIndex(0)) > Ebin7_low && tagger->GetPhotonBeam_E(tagger->GetPromptIndex(0)) < Ebin7_hi)
+             {
+               etaHist7->FillPromptTagger(trigger->GetHelicityBit(), tagger->GetMissingVector(tagger->GetPromptIndex(0)),tagger->GetTagged_t(tagger->GetPromptIndex(0)),tagger->GetPhotonBeam_E(tagger->GetPromptIndex(0)),tagger->GetTagged_ch(tagger->GetPromptIndex(0)));
+               etaHist7->FillPromptMeson(trigger->GetHelicityBit(), eta->Particle(0));
+               etaHist7->FillPromptPhoton(trigger->GetHelicityBit(), photons->Particle(eta->GetDaughterIndex(0,0)), photons->Particle(eta->GetDaughterIndex(0,1)));
+             }
+
+           else if(tagger->GetPhotonBeam_E(tagger->GetPromptIndex(0)) > Ebin8_low && tagger->GetPhotonBeam_E(tagger->GetPromptIndex(0)) < Ebin8_hi)
+             {
+               etaHist8->FillPromptTagger(trigger->GetHelicityBit(), tagger->GetMissingVector(tagger->GetPromptIndex(0)),tagger->GetTagged_t(tagger->GetPromptIndex(0)),tagger->GetPhotonBeam_E(tagger->GetPromptIndex(0)),tagger->GetTagged_ch(tagger->GetPromptIndex(0)));
+               etaHist8->FillPromptMeson(trigger->GetHelicityBit(), eta->Particle(0));
+               etaHist8->FillPromptPhoton(trigger->GetHelicityBit(), photons->Particle(eta->GetDaughterIndex(0,0)), photons->Particle(eta->GetDaughterIndex(0,1)));
+             }
+
+           else if(tagger->GetPhotonBeam_E(tagger->GetPromptIndex(0)) > Ebin9_low && tagger->GetPhotonBeam_E(tagger->GetPromptIndex(0)) < Ebin9_hi)
+             {
+               etaHist9->FillPromptTagger(trigger->GetHelicityBit(), tagger->GetMissingVector(tagger->GetPromptIndex(0)),tagger->GetTagged_t(tagger->GetPromptIndex(0)),tagger->GetPhotonBeam_E(tagger->GetPromptIndex(0)),tagger->GetTagged_ch(tagger->GetPromptIndex(0)));
+               etaHist9->FillPromptMeson(trigger->GetHelicityBit(), eta->Particle(0));
+               etaHist9->FillPromptPhoton(trigger->GetHelicityBit(), photons->Particle(eta->GetDaughterIndex(0,0)), photons->Particle(eta->GetDaughterIndex(0,1)));
+             }
+
+           else if(tagger->GetPhotonBeam_E(tagger->GetPromptIndex(0)) > Ebin10_low && tagger->GetPhotonBeam_E(tagger->GetPromptIndex(0)) < Ebin10_hi)
+             {
+               etaHist10->FillPromptTagger(trigger->GetHelicityBit(), tagger->GetMissingVector(tagger->GetPromptIndex(0)),tagger->GetTagged_t(tagger->GetPromptIndex(0)),tagger->GetPhotonBeam_E(tagger->GetPromptIndex(0)),tagger->GetTagged_ch(tagger->GetPromptIndex(0)));
+               etaHist10->FillPromptMeson(trigger->GetHelicityBit(), eta->Particle(0));
+               etaHist10->FillPromptPhoton(trigger->GetHelicityBit(), photons->Particle(eta->GetDaughterIndex(0,0)), photons->Particle(eta->GetDaughterIndex(0,1)));
+             }
+
+           else if(tagger->GetPhotonBeam_E(tagger->GetPromptIndex(0)) > Ebin11_low && tagger->GetPhotonBeam_E(tagger->GetPromptIndex(0)) < Ebin11_hi)
+             {
+               etaHist11->FillPromptTagger(trigger->GetHelicityBit(), tagger->GetMissingVector(tagger->GetPromptIndex(0)),tagger->GetTagged_t(tagger->GetPromptIndex(0)),tagger->GetPhotonBeam_E(tagger->GetPromptIndex(0)),tagger->GetTagged_ch(tagger->GetPromptIndex(0)));
+               etaHist11->FillPromptMeson(trigger->GetHelicityBit(), eta->Particle(0));
+               etaHist11->FillPromptPhoton(trigger->GetHelicityBit(), photons->Particle(eta->GetDaughterIndex(0,0)), photons->Particle(eta->GetDaughterIndex(0,1)));
+             }
+            }
+            //===================================================================================================================
             if(tagger->GetNRand() == 1)
             {
-                etaHist->FillRandTagger(trigger->GetHelicityBit(), tagger->GetMissingVector(tagger->GetRandIndex(0)),tagger->GetTagged_t(tagger->GetRandIndex(0)),tagger->GetPhotonBeam_E(tagger->GetRandIndex(0)),tagger->GetTagged_ch(tagger->GetRandIndex(0)));
-                etaHist->FillRandMeson(trigger->GetHelicityBit(), eta->Particle(0));
-                etaHist->FillRandPhoton(trigger->GetHelicityBit(), photons->Particle(eta->GetDaughterIndex(0,0)), photons->Particle(eta->GetDaughterIndex(0,1)));
-            }
+             etaHist->FillRandTagger(trigger->GetHelicityBit(), tagger->GetMissingVector(tagger->GetRandIndex(0)),tagger->GetTagged_t(tagger->GetRandIndex(0)),tagger->GetPhotonBeam_E(tagger->GetRandIndex(0)),tagger->GetTagged_ch(tagger->GetRandIndex(0)));
+             etaHist->FillRandMeson(trigger->GetHelicityBit(), eta->Particle(0));
+             etaHist->FillRandPhoton(trigger->GetHelicityBit(), photons->Particle(eta->GetDaughterIndex(0,0)), photons->Particle(eta->GetDaughterIndex(0,1)));
+
+
+          if(tagger->GetPhotonBeam_E(tagger->GetRandIndex(0)) > Ebin0_low && tagger->GetPhotonBeam_E(tagger->GetRandIndex(0)) < Ebin0_hi)
+           {
+             etaHist0->FillRandTagger(trigger->GetHelicityBit(), tagger->GetMissingVector(tagger->GetRandIndex(0)),tagger->GetTagged_t(tagger->GetRandIndex(0)),tagger->GetPhotonBeam_E(tagger->GetRandIndex(0)),tagger->GetTagged_ch(tagger->GetRandIndex(0)));
+             etaHist0->FillRandMeson(trigger->GetHelicityBit(), eta->Particle(0));
+             etaHist0->FillRandPhoton(trigger->GetHelicityBit(), photons->Particle(eta->GetDaughterIndex(0,0)), photons->Particle(eta->GetDaughterIndex(0,1)));
+           }
+
+           else if(tagger->GetPhotonBeam_E(tagger->GetRandIndex(0)) > Ebin1_low && tagger->GetPhotonBeam_E(tagger->GetRandIndex(0)) < Ebin1_hi)
+           {
+             etaHist1->FillRandTagger(trigger->GetHelicityBit(), tagger->GetMissingVector(tagger->GetRandIndex(0)),tagger->GetTagged_t(tagger->GetRandIndex(0)),tagger->GetPhotonBeam_E(tagger->GetRandIndex(0)),tagger->GetTagged_ch(tagger->GetRandIndex(0)));
+             etaHist1->FillRandMeson(trigger->GetHelicityBit(), eta->Particle(0));
+             etaHist1->FillRandPhoton(trigger->GetHelicityBit(), photons->Particle(eta->GetDaughterIndex(0,0)), photons->Particle(eta->GetDaughterIndex(0,1)));
+           }
+          else if(tagger->GetPhotonBeam_E(tagger->GetRandIndex(0)) > Ebin2_low && tagger->GetPhotonBeam_E(tagger->GetRandIndex(0)) < Ebin2_hi)
+          {
+            etaHist2->FillRandTagger(trigger->GetHelicityBit(), tagger->GetMissingVector(tagger->GetRandIndex(0)),tagger->GetTagged_t(tagger->GetRandIndex(0)),tagger->GetPhotonBeam_E(tagger->GetRandIndex(0)),tagger->GetTagged_ch(tagger->GetRandIndex(0)));
+            etaHist2->FillRandMeson(trigger->GetHelicityBit(), eta->Particle(0));
+            etaHist2->FillRandPhoton(trigger->GetHelicityBit(), photons->Particle(eta->GetDaughterIndex(0,0)), photons->Particle(eta->GetDaughterIndex(0,1)));
+          }
+
+          else if(tagger->GetPhotonBeam_E(tagger->GetRandIndex(0)) > Ebin3_low && tagger->GetPhotonBeam_E(tagger->GetRandIndex(0)) < Ebin3_hi)
+          {
+            etaHist3->FillRandTagger(trigger->GetHelicityBit(), tagger->GetMissingVector(tagger->GetRandIndex(0)),tagger->GetTagged_t(tagger->GetRandIndex(0)),tagger->GetPhotonBeam_E(tagger->GetRandIndex(0)),tagger->GetTagged_ch(tagger->GetRandIndex(0)));
+            etaHist3->FillRandMeson(trigger->GetHelicityBit(), eta->Particle(0));
+            etaHist3->FillRandPhoton(trigger->GetHelicityBit(), photons->Particle(eta->GetDaughterIndex(0,0)), photons->Particle(eta->GetDaughterIndex(0,1)));
+          }
+
+          else if(tagger->GetPhotonBeam_E(tagger->GetRandIndex(0)) > Ebin4_low && tagger->GetPhotonBeam_E(tagger->GetRandIndex(0)) < Ebin4_hi)
+          {
+            etaHist4->FillRandTagger(trigger->GetHelicityBit(), tagger->GetMissingVector(tagger->GetRandIndex(0)),tagger->GetTagged_t(tagger->GetRandIndex(0)),tagger->GetPhotonBeam_E(tagger->GetRandIndex(0)),tagger->GetTagged_ch(tagger->GetRandIndex(0)));
+            etaHist4->FillRandMeson(trigger->GetHelicityBit(), eta->Particle(0));
+            etaHist4->FillRandPhoton(trigger->GetHelicityBit(), photons->Particle(eta->GetDaughterIndex(0,0)), photons->Particle(eta->GetDaughterIndex(0,1)));
+          }
+          else if(tagger->GetPhotonBeam_E(tagger->GetRandIndex(0)) > Ebin5_low && tagger->GetPhotonBeam_E(tagger->GetRandIndex(0)) < Ebin5_hi)
+          {
+            etaHist5->FillRandTagger(trigger->GetHelicityBit(), tagger->GetMissingVector(tagger->GetRandIndex(0)),tagger->GetTagged_t(tagger->GetRandIndex(0)),tagger->GetPhotonBeam_E(tagger->GetRandIndex(0)),tagger->GetTagged_ch(tagger->GetRandIndex(0)));
+            etaHist5->FillRandMeson(trigger->GetHelicityBit(), eta->Particle(0));
+            etaHist5->FillRandPhoton(trigger->GetHelicityBit(), photons->Particle(eta->GetDaughterIndex(0,0)), photons->Particle(eta->GetDaughterIndex(0,1)));
+          }
+          else if(tagger->GetPhotonBeam_E(tagger->GetRandIndex(0)) > Ebin6_low && tagger->GetPhotonBeam_E(tagger->GetRandIndex(0)) < Ebin6_hi)
+          {
+            etaHist6->FillRandTagger(trigger->GetHelicityBit(), tagger->GetMissingVector(tagger->GetRandIndex(0)),tagger->GetTagged_t(tagger->GetRandIndex(0)),tagger->GetPhotonBeam_E(tagger->GetRandIndex(0)),tagger->GetTagged_ch(tagger->GetRandIndex(0)));
+            etaHist6->FillRandMeson(trigger->GetHelicityBit(), eta->Particle(0));
+            etaHist6->FillRandPhoton(trigger->GetHelicityBit(), photons->Particle(eta->GetDaughterIndex(0,0)), photons->Particle(eta->GetDaughterIndex(0,1)));
+          }
+          else if(tagger->GetPhotonBeam_E(tagger->GetRandIndex(0)) > Ebin7_low && tagger->GetPhotonBeam_E(tagger->GetRandIndex(0)) < Ebin7_hi)
+          {
+            etaHist7->FillRandTagger(trigger->GetHelicityBit(), tagger->GetMissingVector(tagger->GetRandIndex(0)),tagger->GetTagged_t(tagger->GetRandIndex(0)),tagger->GetPhotonBeam_E(tagger->GetRandIndex(0)),tagger->GetTagged_ch(tagger->GetRandIndex(0)));
+            etaHist7->FillRandMeson(trigger->GetHelicityBit(), eta->Particle(0));
+            etaHist7->FillRandPhoton(trigger->GetHelicityBit(), photons->Particle(eta->GetDaughterIndex(0,0)), photons->Particle(eta->GetDaughterIndex(0,1)));
+          }
+
+          else if(tagger->GetPhotonBeam_E(tagger->GetRandIndex(0)) > Ebin8_low && tagger->GetPhotonBeam_E(tagger->GetRandIndex(0)) < Ebin8_hi)
+          {
+            etaHist8->FillRandTagger(trigger->GetHelicityBit(), tagger->GetMissingVector(tagger->GetRandIndex(0)),tagger->GetTagged_t(tagger->GetRandIndex(0)),tagger->GetPhotonBeam_E(tagger->GetRandIndex(0)),tagger->GetTagged_ch(tagger->GetRandIndex(0)));
+            etaHist8->FillRandMeson(trigger->GetHelicityBit(), eta->Particle(0));
+            etaHist8->FillRandPhoton(trigger->GetHelicityBit(), photons->Particle(eta->GetDaughterIndex(0,0)), photons->Particle(eta->GetDaughterIndex(0,1)));
+          }
+
+          else if(tagger->GetPhotonBeam_E(tagger->GetRandIndex(0)) > Ebin9_low && tagger->GetPhotonBeam_E(tagger->GetRandIndex(0)) < Ebin9_hi)
+          {
+            etaHist9->FillRandTagger(trigger->GetHelicityBit(), tagger->GetMissingVector(tagger->GetRandIndex(0)),tagger->GetTagged_t(tagger->GetRandIndex(0)),tagger->GetPhotonBeam_E(tagger->GetRandIndex(0)),tagger->GetTagged_ch(tagger->GetRandIndex(0)));
+            etaHist9->FillRandMeson(trigger->GetHelicityBit(), eta->Particle(0));
+            etaHist9->FillRandPhoton(trigger->GetHelicityBit(), photons->Particle(eta->GetDaughterIndex(0,0)), photons->Particle(eta->GetDaughterIndex(0,1)));
+          }
+
+          else if(tagger->GetPhotonBeam_E(tagger->GetRandIndex(0)) > Ebin10_low && tagger->GetPhotonBeam_E(tagger->GetRandIndex(0)) < Ebin10_hi)
+          {
+            etaHist10->FillRandTagger(trigger->GetHelicityBit(), tagger->GetMissingVector(tagger->GetRandIndex(0)),tagger->GetTagged_t(tagger->GetRandIndex(0)),tagger->GetPhotonBeam_E(tagger->GetRandIndex(0)),tagger->GetTagged_ch(tagger->GetRandIndex(0)));
+            etaHist10->FillRandMeson(trigger->GetHelicityBit(), eta->Particle(0));
+            etaHist10->FillRandPhoton(trigger->GetHelicityBit(), photons->Particle(eta->GetDaughterIndex(0,0)), photons->Particle(eta->GetDaughterIndex(0,1)));
+          }
+
+          else if(tagger->GetPhotonBeam_E(tagger->GetRandIndex(0)) > Ebin11_low && tagger->GetPhotonBeam_E(tagger->GetRandIndex(0)) < Ebin11_hi)
+          {
+            etaHist11->FillRandTagger(trigger->GetHelicityBit(), tagger->GetMissingVector(tagger->GetRandIndex(0)),tagger->GetTagged_t(tagger->GetRandIndex(0)),tagger->GetPhotonBeam_E(tagger->GetRandIndex(0)),tagger->GetTagged_ch(tagger->GetRandIndex(0)));
+            etaHist11->FillRandMeson(trigger->GetHelicityBit(), eta->Particle(0));
+            etaHist11->FillRandPhoton(trigger->GetHelicityBit(), photons->Particle(eta->GetDaughterIndex(0,0)), photons->Particle(eta->GetDaughterIndex(0,1)));
+          }
+           }
         }
+
+
        /*else if(etap->GetNParticles() == 1)
         {
             if(tagger->GetNPrompt() == 1)
@@ -236,7 +446,38 @@ Bool_t  GPlot::Process(const char* input_filename, const char* output_filename)
     file_out->cd();
     gDirectory->mkdir("pi0_4");
     file_out->cd();
+    gDirectory->mkdir("pi0_5");
+    file_out->cd();
+    gDirectory->mkdir("pi0_6");
+    file_out->cd();
+    gDirectory->mkdir("pi0_7");
+    //=================Eta starts here==========================
+    file_out->cd();
     gDirectory->mkdir("eta");
+    file_out->cd();
+    gDirectory->mkdir("eta_0");
+    file_out->cd();
+    gDirectory->mkdir("eta_1");
+    file_out->cd();
+    gDirectory->mkdir("eta_2");
+    file_out->cd();
+    gDirectory->mkdir("eta_3");
+    file_out->cd();
+    gDirectory->mkdir("eta_4");
+    file_out->cd();
+    gDirectory->mkdir("eta_5");
+    file_out->cd();
+    gDirectory->mkdir("eta_6");
+    file_out->cd();
+    gDirectory->mkdir("eta_7");
+    file_out->cd();
+    gDirectory->mkdir("eta_8");
+    file_out->cd();
+    gDirectory->mkdir("eta_9");
+    file_out->cd();
+    gDirectory->mkdir("eta_10");
+    file_out->cd();
+    gDirectory->mkdir("eta_11");
    // file_out->cd();
     //gDirectory->mkdir("etap");
 
@@ -253,7 +494,41 @@ Bool_t  GPlot::Process(const char* input_filename, const char* output_filename)
     file_out->cd();
     pi0Hist4 = new GHistHelTaggedMeson(gDirectory->GetDirectory("pi0_4"));
     file_out->cd();
+    pi0Hist5 = new GHistHelTaggedMeson(gDirectory->GetDirectory("pi0_5"));
+    file_out->cd();
+    pi0Hist6 = new GHistHelTaggedMeson(gDirectory->GetDirectory("pi0_6"));
+    file_out->cd();
+    pi0Hist7 = new GHistHelTaggedMeson(gDirectory->GetDirectory("pi0_7"));
+
+
+    //=================== Eta ================================
+    file_out->cd();
     etaHist = new GHistHelTaggedMeson(gDirectory->GetDirectory("eta"));
+    file_out->cd();
+    etaHist0 = new GHistHelTaggedMeson(gDirectory->GetDirectory("eta_0"));
+    file_out->cd();
+    etaHist1 = new GHistHelTaggedMeson(gDirectory->GetDirectory("eta_1"));
+    file_out->cd();
+    etaHist2 = new GHistHelTaggedMeson(gDirectory->GetDirectory("eta_2"));
+    file_out->cd();
+    etaHist3 = new GHistHelTaggedMeson(gDirectory->GetDirectory("eta_3"));
+    file_out->cd();
+    etaHist4 = new GHistHelTaggedMeson(gDirectory->GetDirectory("eta_4"));
+    file_out->cd();
+    etaHist5 = new GHistHelTaggedMeson(gDirectory->GetDirectory("eta_5"));
+    file_out->cd();
+    etaHist6 = new GHistHelTaggedMeson(gDirectory->GetDirectory("eta_6"));
+    file_out->cd();
+    etaHist7 = new GHistHelTaggedMeson(gDirectory->GetDirectory("eta_7"));
+    file_out->cd();
+    etaHist8 = new GHistHelTaggedMeson(gDirectory->GetDirectory("eta_8"));
+    file_out->cd();
+    etaHist9 = new GHistHelTaggedMeson(gDirectory->GetDirectory("eta_9"));
+    file_out->cd();
+    etaHist10 = new GHistHelTaggedMeson(gDirectory->GetDirectory("eta_10"));
+    file_out->cd();
+    etaHist11 = new GHistHelTaggedMeson(gDirectory->GetDirectory("eta_11"));
+
     //file_out->cd();
    // etapHist = new GHistTaggedEtap(gDirectory->GetDirectory("etap"));
 
@@ -265,7 +540,24 @@ Bool_t  GPlot::Process(const char* input_filename, const char* output_filename)
     pi0Hist2->Write();
     pi0Hist3->Write();
     pi0Hist4->Write();
+    pi0Hist5->Write();
+    pi0Hist6->Write();
+    pi0Hist7->Write();
+    //=============Eta=================================
+     //TraverseEntries(0, eta->GetNEntries()+1);
     etaHist->Write();
+    etaHist0->Write();
+    etaHist1->Write();
+    etaHist2->Write();
+    etaHist3->Write();
+    etaHist4->Write();
+    etaHist5->Write();
+    etaHist6->Write();
+    etaHist7->Write();
+    etaHist8->Write();
+    etaHist9->Write();
+    etaHist10->Write();
+    etaHist11->Write();
     //etapHist->Write();
     /*hist->Write(&taggerTime);
     TH1D    diff(protonAngleDiffPrompt);

@@ -544,7 +544,7 @@ Bool_t  GPlot::Process(const char* input_filename, const char* output_filename)
     pi0Hist6->Write();
     pi0Hist7->Write();
     //=============Eta=================================
-     //TraverseEntries(0, eta->GetNEntries()+1);
+     TraverseEntries(0, eta->GetNEntries()+1);
     etaHist->Write();
     etaHist0->Write();
     etaHist1->Write();

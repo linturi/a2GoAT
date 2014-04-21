@@ -11,9 +11,9 @@ GHistParticle::GHistParticle(TDirectory* _Dir)  :
     Pz  = new TH1D("Pz", "Pz", 500, -500, 2000);
     E   = new TH1D("E", "E", 500, 0, 2000);
     M   = new TH1D("M", "Mass", 500, -500, 2000);
-    Theta   = new TH1D("Theta", "Theta", 45, 0, 180);
-    CosTheta =new TH1D("CosTheta","CosTheta", 45, -1, 1);
-    Phi     = new TH1D("Phi", "Phi", 180, -180, 180);
+    Theta   = new TH1D("Theta", "Theta", 12, 0, 180);
+    CosTheta =new TH1D("CosTheta","CosTheta", 12, -1, 1);
+    Phi     = new TH1D("Phi", "Phi", 360, -180, 180);
 }
 
 GHistParticle::~GHistParticle()

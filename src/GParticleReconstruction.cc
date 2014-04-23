@@ -11,7 +11,7 @@ GParticleReconstruction::GParticleReconstruction()  :
     TAPSTimeAfterCut(0),
     DoScalerCorrection(kFALSE),
     DoTrigger(kFALSE),
-    E_Sum(50),
+    E_Sum(0),
     multiplicity(1)
 {
     CBTimeCut[0]    = -1000000.0;

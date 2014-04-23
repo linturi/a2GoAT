@@ -24,9 +24,14 @@ private:
     Bool_t      doMisMass;
     Double_t    MisMass[2];
 
+
+    Bool_t      doESum;
+    Double_t    ESum[2];
+
     Bool_t      DoMultiplicity();
     Bool_t      DoInvMass();
     Bool_t      DoMisMass();
+    Bool_t      DoESum();
     
     Int_t           nTagged;
     Int_t           tagged_ch[GTreeTagger_MAX];
@@ -56,6 +61,7 @@ public:
     void    SetEtaInvMassCut(const Double_t min, const Double_t max);
     void    SetEtapInvMassCut(const Double_t min, const Double_t max);
     void    SetMisMassCut(const Double_t min, const Double_t max);
+    void    SetESumCut(const Double_t min, const Double_t max);
 
 };
 

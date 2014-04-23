@@ -452,7 +452,7 @@ Bool_t  GPlot::Process(const char* input_filename, const char* output_filename)
     file_out->cd();
     gDirectory->mkdir("pi0_7");
     //=================Eta starts here==========================
-    file_out->cd();
+    /*file_out->cd();
     gDirectory->mkdir("eta");
     file_out->cd();
     gDirectory->mkdir("eta_0");
@@ -477,7 +477,7 @@ Bool_t  GPlot::Process(const char* input_filename, const char* output_filename)
     file_out->cd();
     gDirectory->mkdir("eta_10");
     file_out->cd();
-    gDirectory->mkdir("eta_11");
+    gDirectory->mkdir("eta_11");*/
    // file_out->cd();
     //gDirectory->mkdir("etap");
 
@@ -502,7 +502,7 @@ Bool_t  GPlot::Process(const char* input_filename, const char* output_filename)
 
 
     //=================== Eta ================================
-    file_out->cd();
+    /*file_out->cd();
     etaHist = new GHistHelTaggedMeson(gDirectory->GetDirectory("eta"));
     file_out->cd();
     etaHist0 = new GHistHelTaggedMeson(gDirectory->GetDirectory("eta_0"));
@@ -527,7 +527,7 @@ Bool_t  GPlot::Process(const char* input_filename, const char* output_filename)
     file_out->cd();
     etaHist10 = new GHistHelTaggedMeson(gDirectory->GetDirectory("eta_10"));
     file_out->cd();
-    etaHist11 = new GHistHelTaggedMeson(gDirectory->GetDirectory("eta_11"));
+    etaHist11 = new GHistHelTaggedMeson(gDirectory->GetDirectory("eta_11"));*/
 
     //file_out->cd();
    // etapHist = new GHistTaggedEtap(gDirectory->GetDirectory("etap"));
@@ -544,7 +544,7 @@ Bool_t  GPlot::Process(const char* input_filename, const char* output_filename)
     pi0Hist6->Write();
     pi0Hist7->Write();
     //=============Eta=================================
-     TraverseEntries(0, eta->GetNEntries()+1);
+ /*    TraverseEntries(0, eta->GetNEntries()+1);
     etaHist->Write();
     etaHist0->Write();
     etaHist1->Write();
@@ -557,7 +557,7 @@ Bool_t  GPlot::Process(const char* input_filename, const char* output_filename)
     etaHist8->Write();
     etaHist9->Write();
     etaHist10->Write();
-    etaHist11->Write();
+    etaHist11->Write();*/
     //etapHist->Write();
     /*hist->Write(&taggerTime);
     TH1D    diff(protonAngleDiffPrompt);

@@ -7,7 +7,8 @@ using namespace std;
 GCut::GCut()    :
     doMultiplicity(kFALSE),
     doInvMass(kFALSE),
-    doMisMass(kFALSE)
+    doMisMass(kFALSE),
+    doESum(kFALSE)
 {
     nPhoton         = -1;
     nProton         = -1;
@@ -24,6 +25,9 @@ GCut::GCut()    :
 
     MisMass[0]      = 0;
     MisMass[1]      = 2500;
+
+    ESum[0]         = 0;
+    ESum[1]         = 5000;
 }
 
 GCut::~GCut()
@@ -122,6 +126,14 @@ Bool_t      GCut::DoMisMass()
     return kTRUE;
 }
 
+Bool_t      GCut::DoESum()
+{
+    if(trigger->GetESum() < ESum[0] || trigger->GetESum() > ESum[1])
+        return kFALSE;
+
+    return kTRUE;
+}
+
 void  GCut::ProcessEvent()
 {
     if(doMultiplicity)
@@ -137,6 +149,11 @@ void  GCut::ProcessEvent()
     if(doMisMass)
     {
         if(!DoMisMass())
+            return;
+    }
+    if(doESum)
+    {
+        if(!DoESum())
             return;
     }
 
@@ -230,4 +247,10 @@ void    GCut::SetMisMassCut(const Double_t min, const Double_t max)
     doMisMass= kTRUE;
     MisMass[0]=min;
     MisMass[1]=max;
+}
+void    GCut::SetESumCut(const Double_t min, const Double_t max)
+{
+    doESum= kTRUE;
+    ESum[0]=min;
+    ESum[1]=max;
 }

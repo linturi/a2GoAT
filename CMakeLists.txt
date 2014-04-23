@@ -37,12 +37,17 @@ add_executable(MyGoAT
    inc/GTreeParticle.h
    inc/GTreeMeson.h
    inc/GTreeTrigger.h
+   inc/GTreeFit.h
    inc/GTreeManager.h
    inc/GCorrectScalers.h
    inc/GParticleReconstruction.h
    inc/GMesonReconstruction.h
+   inc/GSetMesonMass.h
    inc/GTaggerReconstruction.h
    inc/GProtonReconstruction.h
+   inc/GKinFitterParticle.h
+   inc/GKinFitter.h
+   inc/GFitEtap6g.h
    inc/MyGoAT.h
    src/GTree.cc
    src/GTreeRawEvent.cc
@@ -52,12 +57,17 @@ add_executable(MyGoAT
    src/GTreeParticle.cc
    src/GTreeMeson.cc
    src/GTreeTrigger.cc
+   src/GTreeFit.cc
    src/GTreeManager.cc
    src/GCorrectScalers.cc
    src/GParticleReconstruction.cc
    src/GMesonReconstruction.cc
+   src/GSetMesonMass.cc
    src/GTaggerReconstruction.cc
    src/GProtonReconstruction.cc
+   src/GKinFitterParticle.cc
+   src/GKinFitter.cc
+   src/GFitEtap6g.cc
    src/MyGoAT.cc
    )
 target_link_libraries(MyGoAT ${ROOT_LIBRARIES})
@@ -71,7 +81,9 @@ add_executable(MyGoATPlot
    inc/GTreeParticle.h
    inc/GTreeMeson.h
    inc/GTreeTrigger.h
+   inc/GTreeFit.h
    inc/GTreeManager.h
+   inc/GPlotInvMass.h
    inc/GPlotTime.h
    inc/GPlotProton.h
    inc/GHist.h
@@ -81,6 +93,9 @@ add_executable(MyGoATPlot
    inc/GHistHelTaggedMeson.h
    inc/GPlotCut.h
    inc/GPlot.h
+   inc/GPlotCutMC.h
+   inc/GPlotEnergyBins.h
+   inc/GPlotScalers.h
    inc/MyGoAT.h
    src/GTree.cc
    src/GTreeRawEvent.cc
@@ -90,7 +105,9 @@ add_executable(MyGoATPlot
    src/GTreeParticle.cc
    src/GTreeMeson.cc
    src/GTreeTrigger.cc
+   src/GTreeFit.cc
    src/GTreeManager.cc
+   src/GPlotInvMass.cc
    src/GPlotTime.cc
    src/GPlotProton.cc
    src/GHist.cc
@@ -100,6 +117,9 @@ add_executable(MyGoATPlot
    src/GHistHelTaggedMeson.cc
    src/GPlotCut.cc
    src/GPlot.cc
+   src/GPlotCutMC.cc
+   src/GPlotEnergyBins.cc
+   src/GPlotScalers.cc
    src/MyGoATPlot.cc
    )
 target_link_libraries(MyGoATPlot ${ROOT_LIBRARIES})
@@ -113,6 +133,7 @@ add_executable(MyGoATCut
    inc/GTreeParticle.h
    inc/GTreeMeson.h
    inc/GTreeTrigger.h
+   inc/GTreeFit.h
    inc/GTreeManager.h
    inc/GRawCut.h
    inc/GCut.h
@@ -125,6 +146,7 @@ add_executable(MyGoATCut
    src/GTreeParticle.cc
    src/GTreeMeson.cc
    src/GTreeTrigger.cc
+   src/GTreeFit.cc
    src/GTreeManager.cc
    src/GRawCut.cc
    src/GCut.cc

@@ -2,11 +2,14 @@
 
 
 #include "MyGoAT.h"
-#include "GParticleReconstruction.h"
+#include "GPlotInvMass.h"
 #include "GPlotTime.h"
 #include "GPlotCut.h"
 #include "GPlot.h"
+#include "GPlotCutMC.h"
 #include "GPlotProton.h"
+#include "GPlotEnergyBins.h"
+#include "GPlotScalers.h"
 
 using namespace std;
 
@@ -42,8 +45,16 @@ void* start(void* arguments)
         tree    = new GPlotCut();
     else if(strcmp(arg->type, "all") == 0 || strcmp(arg->type, "hist") == 0)
         tree    = new GPlot();
+    else if(strcmp(arg->type, "mccut") == 0 || strcmp(arg->type, "mcCut") == 0 || strcmp(arg->type, "MCCut") == 0)
+        tree    = new GPlotCutMC();
     else if(strcmp(arg->type, "proton") == 0 || strcmp(arg->type, "Proton") == 0 || strcmp(arg->type, "PROTON") == 0)
         tree    = new GPlotProton();
+    else if(strcmp(arg->type, "bins") == 0 || strcmp(arg->type, "Bins") == 0 || strcmp(arg->type, "BINS") == 0)
+        tree    = new GPlotEnergyBins();
+    else if(strcmp(arg->type, "invmass") == 0 || strcmp(arg->type, "invMass") == 0 || strcmp(arg->type, "im") == 0)
+        tree    = new GPlotInvMass();
+    else if(strcmp(arg->type, "scaler") == 0 || strcmp(arg->type, "Scaler") == 0 || strcmp(arg->type, "scalers") == 0)
+        tree    = new GPlotScalers();
     else
     {
         cout << "Reconstruction type " << arg->type <<" is unknown." << endl;

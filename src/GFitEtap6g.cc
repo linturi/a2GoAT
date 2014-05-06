@@ -7,9 +7,9 @@ using namespace std;
 GFitEtap6g::GFitEtap6g()	:
 	ConfidenceLevel(0),
     ChiSq(0),
-    fit(6, 4, 0)
+    fit(2, 1, 0)
 {
-	for(int i=0; i<24; i++)
+    for(int i=0; i<8; i++)
 		Pull[i]	= 0;
 }
 
@@ -17,7 +17,7 @@ GFitEtap6g::~GFitEtap6g()
 {
 	if(ConfidenceLevel)	delete ConfidenceLevel;
 	if(ChiSq)			delete ChiSq;
-	for(int i=0; i<24; i++)
+    for(int i=0; i<8; i++)
 	{
 		if(Pull[i])		delete Pull[i];
 	}
@@ -25,29 +25,19 @@ GFitEtap6g::~GFitEtap6g()
 
 void  GFitEtap6g::ProcessEvent()
 {
-	if(photons->GetNParticles()!=6)
+    if(photons->GetNParticles()!=2)
 		return;
 	
-	GKinFitterParticle	pho[6];
+    GKinFitterParticle	pho[2];
 	
 	fit.Reset();
-	for(int i=0; i<6; i++)
+    for(int i=0; i<2; i++)
 	{
 		pho[i].Set4Vector(photons->Particle(i));
 		pho[i].SetResolutions(3, 3, 60);
 		fit.AddPosKFParticle(pho[i]);
-	}
-	Int_t	sub[6];
-	sub[0]	= pi0->GetDaughterIndex(0, 0);
-	sub[1]	= pi0->GetDaughterIndex(0, 1);
-	fit.AddSubInvMassConstraint(2, sub, MASS_PI0);
-	sub[0]	= pi0->GetDaughterIndex(1, 0);
-	sub[1]	= pi0->GetDaughterIndex(1, 1);
-	fit.AddSubInvMassConstraint(2, sub, MASS_PI0);
-	sub[0]	= eta->GetDaughterIndex(0, 0);
-	sub[1]	= eta->GetDaughterIndex(0, 1);
-	fit.AddSubInvMassConstraint(2, sub, MASS_ETA);
-	fit.AddInvMassConstraint(MASS_ETAP);
+    }
+    fit.AddInvMassConstraint(MASS_PI0);
 	
 	if(fit.Solve()<0)
 		return;
@@ -57,7 +47,7 @@ void  GFitEtap6g::ProcessEvent()
 	//printf("%lf\n", fit.ConfidenceLevel());
 	ChiSq->Fill(fit.GetChi2());
 	fitData->SetChiSq(fit.GetChi2());
-	for(int i=0; i<24; i++)
+    for(int i=0; i<8; i++)
 	{
 		Pull[i]->Fill(fit.Pull(i));
 		fitData->SetPull(i, fit.Pull(i));
@@ -141,7 +131,7 @@ Bool_t  GFitEtap6g::Process(const char* input_filename, const char* output_filen
 	ConfidenceLevel	= new TH1D("ConfidenceLevel", "ConfidenceLevel", 1000, 0, 1);
 	ChiSq			= new TH1D("ChiSq", "ChiSq", 1000, 0, 100);
 	char	str[10];
-	for(int i=0; i<24; i++)
+    for(int i=0; i<8; i++)
 	{
 		sprintf(str, "pull%d", i);
 		Pull[i]		= new TH1D(str, str, 2000, -100, 100);
@@ -153,7 +143,7 @@ Bool_t  GFitEtap6g::Process(const char* input_filename, const char* output_filen
 
     Write(ConfidenceLevel);
     Write(ChiSq);
-    for(int i=0; i<24; i++)
+    for(int i=0; i<8; i++)
 		Write(Pull[i]);
 		
     return kTRUE;

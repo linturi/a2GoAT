@@ -11,6 +11,14 @@ GPlot::GPlot()
  //pi0
 bin0_low=210; bin0_hi=240; bin1_low=240; bin1_hi= 270; bin2_low=270;bin2_hi= 300; bin3_low=300; bin3_hi= 330;
 bin4_low=330;bin4_hi=360;bin5_low=360; bin5_hi=390; bin6_low=390; bin6_hi=420; bin7_low=420;bin7_hi=450;
+bin8_low=450; bin8_hi=480; bin9_low=480; bin9_hi=510; bin10_low=510; bin10_hi=540; bin11_low=540;bin11_hi=570;
+bin12_low=570; bin12_hi=600; bin13_low=600; bin13_hi=630; bin14_low=630; bin14_hi=660, bin15_low=660; bin15_hi=690;
+bin16_low=690, bin16_hi=720; bin17_low=720; bin18_hi=750;bin19_low=750; bin19_hi=780; bin20_low=780; bin20_hi=810;
+bin21_low=810; bin21_hi=840; bin22_low=840; bin22_hi=870; bin23_low=870; bin23_hi=900; bin24_low=900; bin24_hi=930;
+bin25_low=930; bin25_hi=960;bin26_low=960; bin26_hi=990; bin27_low=990; bin27_hi=1020; bin28_low=1020; bin28_hi=1050;
+bin29_low=1050; bin29_hi=1080; bin30_low=1080; bin30_hi=1110;bin31_low=1110; bin31_hi=1140; bin32_low=1140; bin32_hi=1170;
+bin33_low=1170; bin33_hi =1200; bin34_low=1200; bin34_hi=1230; bin35_low=1230; bin35_hi=1260; bin36_low=1260; bin36_hi=1290;
+bin37_low=1290; bin37_hi=1320; bin38_low=1320; bin38_hi=1350; bin39_low=1350; bin39_hi=1380; bin40_low=1380; bin3_40=1410;
 //Eta
 Ebin0_low=710; Ebin0_hi=740; Ebin1_low=740; Ebin1_hi= 770; Ebin2_low=770;Ebin2_hi= 800; Ebin3_low=800; Ebin3_hi= 850;
 Ebin4_low=850;Ebin4_hi=900;Ebin5_low=900; Ebin5_hi=950; Ebin6_low=950; Ebin6_hi=1000; Ebin7_low=1000;Ebin7_hi=1050;
@@ -90,6 +98,7 @@ void  GPlot::ProcessEvent()
                  pi0Hist7->FillPromptPhoton(trigger->GetHelicityBit(), photons->Particle(pi0->GetDaughterIndex(0,0)), photons->Particle(pi0->GetDaughterIndex(0,1)));
              }
 
+
             }
             //======================================================================================================================================================================================
             if(tagger->GetNRand() == 1)
@@ -153,7 +162,7 @@ void  GPlot::ProcessEvent()
             }
         }
 //======================================================================================================================================================
-       else if(eta->GetNParticles() == 1)
+      /* else if(eta->GetNParticles() == 1)
         {
             if(tagger->GetNPrompt() == 1)
             {

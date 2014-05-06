@@ -93,6 +93,8 @@ add_executable(MyGoATPlot
    inc/GHistHelTaggedMeson.h
    inc/GPlotCut.h
    inc/GPlot.h
+   inc/GPlotEbins.h
+   inc/GPlotJames.h
    inc/GPlotCutMC.h
    inc/GPlotEnergyBins.h
    inc/GPlotScalers.h
@@ -117,6 +119,8 @@ add_executable(MyGoATPlot
    src/GHistHelTaggedMeson.cc
    src/GPlotCut.cc
    src/GPlot.cc
+   src/GPlotEbins.cc
+   src/GPlotJames.cc
    src/GPlotCutMC.cc
    src/GPlotEnergyBins.cc
    src/GPlotScalers.cc

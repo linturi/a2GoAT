@@ -10,7 +10,7 @@
 class  GFitEtap6g  : public GTreeManager
 {
 private:
-    TH1D*           Pull[24];
+    TH1D*           Pull[8];
     TH1D*           ConfidenceLevel;
     TH1D*           ChiSq;
     

@@ -128,8 +128,8 @@ void    GHistHelTaggedMeson::FillPromptPhoton(const Int_t helicity, const TLoren
 }
 void    GHistHelTaggedMeson::FillRandPhoton(const Int_t helicity, const TLorentzVector& vec0, const TLorentzVector& vec1)
 {
-    if(IsReversed==kFALSE)
-    {
+   if(IsReversed==kFALSE)
+   {
     if(helicity == 0)
         hel0->FillRandPhoton(vec0, vec1);
     if(helicity == 1)

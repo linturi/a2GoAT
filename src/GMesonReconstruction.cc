@@ -90,7 +90,7 @@ Bool_t  GMesonReconstruction::Process(const char* input_filename, const char* ou
     h2g.invMassEta  = new TH1D("h2g_invMassEta", "h2g_invMassEta", 700, 200, 900);
     h2g.invMassEtap = new TH1D("h2g_invMassEtap", "h2g_invMassEtap", 600, 750, 1350);
 
-    h6g.h3pi0.invMassPi0a = new TH1D("h6g_3pi0_invMassPi0a", "h6g_3pi0_invMassPi0a", 500, 0, 500);
+    /*h6g.h3pi0.invMassPi0a = new TH1D("h6g_3pi0_invMassPi0a", "h6g_3pi0_invMassPi0a", 500, 0, 500);
     h6g.h3pi0.invMassPi0b = new TH1D("h6g_3pi0_invMassPi0b", "h6g_3pi0_invMassPi0b", 500, 0, 500);
     h6g.h3pi0.invMassPi0c = new TH1D("h6g_3pi0_invMassPi0c", "h6g_3pi0_invMassPi0c", 500, 0, 500);
     h6g.h3pi0.invMassEta  = new TH1D("h6g_3pi0_invMassEta", "h6g_3pi0_invMassEta", 700, 200, 900);
@@ -98,7 +98,7 @@ Bool_t  GMesonReconstruction::Process(const char* input_filename, const char* ou
     h6g.hetap.invMassPi0a = new TH1D("h6g_etap_invMassPi0a", "h6g_etap_invMassPi0a", 500, 0, 500);
     h6g.hetap.invMassPi0b = new TH1D("h6g_etap_invMassPi0b", "h6g_etap_invMassPi0b", 500, 0, 500);
     h6g.hetap.invMassEta  = new TH1D("h6g_etap_invMassEta", "h6g_etap_invMassEta", 700, 200, 900);
-    h6g.hetap.invMassEtap = new TH1D("h6g_etap_invMassEtap", "h6g_etap_invMassEtap", 600, 750, 1350);
+    h6g.hetap.invMassEtap = new TH1D("h6g_etap_invMassEtap", "h6g_etap_invMassEtap", 600, 750, 1350);*/
 
 
     TraverseEntries(0, photons->GetNEntries()+1);
@@ -106,7 +106,7 @@ Bool_t  GMesonReconstruction::Process(const char* input_filename, const char* ou
     if(!Write())    return kFALSE;
     if(!Write(h2g.invMassPi0))    return kFALSE;
     if(!Write(h2g.invMassEta))    return kFALSE;
-    if(!Write(h2g.invMassEtap))    return kFALSE;
+    /*if(!Write(h2g.invMassEtap))    return kFALSE;
     if(!Write(h6g.h3pi0.invMassPi0a))    return kFALSE;
     if(!Write(h6g.h3pi0.invMassPi0b))    return kFALSE;
     if(!Write(h6g.h3pi0.invMassPi0c))    return kFALSE;
@@ -114,7 +114,7 @@ Bool_t  GMesonReconstruction::Process(const char* input_filename, const char* ou
     if(!Write(h6g.hetap.invMassPi0a))    return kFALSE;
     if(!Write(h6g.hetap.invMassPi0b))    return kFALSE;
     if(!Write(h6g.hetap.invMassEta))    return kFALSE;
-    if(!Write(h6g.hetap.invMassEtap))    return kFALSE;
+    if(!Write(h6g.hetap.invMassEtap))    return kFALSE;*/
     return kTRUE;
 }
 

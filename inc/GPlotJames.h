@@ -4,17 +4,28 @@
 
 #include <TH1D.h>
 #include <TH1I.h>
+#include <TAxis.h>
+#include <TGraphErrors.h>
+#include <TCanvas.h>
 
 #include "GTreeManager.h"
+#include "GHistTaggedMeson.h"
+//#include "GHistHelTaggedMeson.h"
+
 
 
 class  GPlotJames    : public GTreeManager
 {
 private:
-    TH1D*           misMassPrompt[6];
-    TH1D*           misMassRand[6];
-    TH1D*           misMass[6];
-    static  Int_t   cuts[7];
+
+    GHistTaggedMeson*  pi0Hist[41];
+
+
+
+  //==================Eta===============================================================
+    GHistTaggedMeson*  etaHist;
+    GHistTaggedMeson*  etaHist0;
+
 
 protected:
 

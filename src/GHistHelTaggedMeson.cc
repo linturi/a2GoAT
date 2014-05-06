@@ -4,7 +4,8 @@
 
 
 GHistHelTaggedMeson::GHistHelTaggedMeson(TDirectory* _Dir):
-    dir(_Dir)
+    dir(_Dir),
+    IsReversed(kFALSE)
 {
     dir->cd();
     gDirectory->mkdir("hel_0");

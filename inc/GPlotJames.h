@@ -18,7 +18,7 @@ class  GPlotJames    : public GTreeManager
 {
 private:
 
-    GHistTaggedMeson*  pi0Hist[41];
+    GHistTaggedMeson* pi0Histall[15];
 
 
 

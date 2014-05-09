@@ -22,28 +22,28 @@ void  GPlotEbins::ProcessEvent()
         if(pi0->GetNParticles() == 1)
         {
             for(int i=0;i<tagger->GetNPrompt(); i++)
-            //if(tagger->GetNPrompt()==1)
+             //if(tagger->GetNPrompt()==1)
             {
-                for(int l=0; l<41; l++)
+                for(int l=0; l<=15; l++)
                 {
                     if(tagger->GetPhotonBeam_E(tagger->GetPromptIndex(i))>=((30*l)+210) && tagger->GetPhotonBeam_E(tagger->GetPromptIndex(i))<=((30*(l+1))+210))
                     {
                         pi0Hist[l]->FillPromptTagger(trigger->GetHelicityBit(), tagger->GetMissingVector(tagger->GetPromptIndex(i)),tagger->GetTagged_t(tagger->GetPromptIndex(i)),tagger->GetPhotonBeam_E(tagger->GetPromptIndex(i)),tagger->GetTagged_ch(tagger->GetPromptIndex(i)));
                         pi0Hist[l]->FillPromptMeson(trigger->GetHelicityBit(), pi0->Particle(0));
-                        pi0Hist[l]->FillPromptPhoton(trigger->GetHelicityBit(), photons->Particle(pi0->GetDaughterIndex(i,0)), photons->Particle(pi0->GetDaughterIndex(0,i)));
+                        pi0Hist[l]->FillPromptPhoton(trigger->GetHelicityBit(), photons->Particle(pi0->GetDaughterIndex(0,0)), photons->Particle(pi0->GetDaughterIndex(0,1)));
                     }
                 }
             }
             for(int i=0;i<tagger->GetNRand(); i++)
-           // if(tagger->GetNRand()==1)
+            //if(tagger->GetNRand()==1)
             {
-                for(int l=0; l<41; l++)
+                for(int l=0; l<=15; l++)
                 {
                     if(tagger->GetPhotonBeam_E(tagger->GetRandIndex(i))>=((30*l)+210) && tagger->GetPhotonBeam_E(tagger->GetRandIndex(i))<=((30*(l+1))+210))
                     {
                         pi0Hist[l]->FillRandTagger(trigger->GetHelicityBit(), tagger->GetMissingVector(tagger->GetRandIndex(i)),tagger->GetTagged_t(tagger->GetRandIndex(i)),tagger->GetPhotonBeam_E(tagger->GetRandIndex(i)),tagger->GetTagged_ch(tagger->GetRandIndex(i)));
                         pi0Hist[l]->FillRandMeson(trigger->GetHelicityBit(), pi0->Particle(0));
-                        pi0Hist[l]->FillRandPhoton(trigger->GetHelicityBit(), photons->Particle(pi0->GetDaughterIndex(i,0)), photons->Particle(pi0->GetDaughterIndex(0,i)));
+                        pi0Hist[l]->FillRandPhoton(trigger->GetHelicityBit(), photons->Particle(pi0->GetDaughterIndex(0,0)), photons->Particle(pi0->GetDaughterIndex(0,1)));
                     }
                 }
             }
@@ -96,7 +96,7 @@ Bool_t  GPlotEbins::Process(const char* input_filename, const char* output_filen
 {
     if(!Open(input_filename))    return kFALSE;
     if(!OpenPhotons())    return kFALSE;
-   // if(!OpenEtap())    return kFALSE;
+    //if(!OpenEtap())    return kFALSE;
     if(!OpenEta())    return kFALSE;
     if(!OpenPi0())    return kFALSE;
     if(!OpenTagger())    return kFALSE;
@@ -121,7 +121,7 @@ Bool_t  GPlotEbins::Process(const char* input_filename, const char* output_filen
     file_out->cd(); gDirectory->mkdir("pi0_13");
     file_out->cd(); gDirectory->mkdir("pi0_14");
     file_out->cd(); gDirectory->mkdir("pi0_15");
-    file_out->cd(); gDirectory->mkdir("pi0_16");
+    /*file_out->cd(); gDirectory->mkdir("pi0_16");
     file_out->cd(); gDirectory->mkdir("pi0_17");
     file_out->cd(); gDirectory->mkdir("pi0_18");
     file_out->cd(); gDirectory->mkdir("pi0_19");
@@ -145,8 +145,8 @@ Bool_t  GPlotEbins::Process(const char* input_filename, const char* output_filen
     file_out->cd(); gDirectory->mkdir("pi0_37");
     file_out->cd(); gDirectory->mkdir("pi0_38");
     file_out->cd(); gDirectory->mkdir("pi0_39");
-    file_out->cd(); gDirectory->mkdir("pi0_40");
-    file_out->cd(); gDirectory->mkdir("pi0_41");
+    file_out->cd(); gDirectory->mkdir("pi0_40");*/
+    //file_out->cd(); gDirectory->mkdir("pi0_41");
     //file_out->cd(); gDirectory->mkdir("pi0_42");
 
     //=================Eta starts here==========================
@@ -195,7 +195,7 @@ Bool_t  GPlotEbins::Process(const char* input_filename, const char* output_filen
     file_out->cd(); pi0Hist[13] = new GHistHelTaggedMeson(gDirectory->GetDirectory("pi0_13"));
     file_out->cd(); pi0Hist[14] = new GHistHelTaggedMeson(gDirectory->GetDirectory("pi0_14"));
     file_out->cd(); pi0Hist[15] = new GHistHelTaggedMeson(gDirectory->GetDirectory("pi0_15"));
-    file_out->cd(); pi0Hist[16] = new GHistHelTaggedMeson(gDirectory->GetDirectory("pi0_16"));
+    /*file_out->cd(); pi0Hist[16] = new GHistHelTaggedMeson(gDirectory->GetDirectory("pi0_16"));
     file_out->cd(); pi0Hist[17] = new GHistHelTaggedMeson(gDirectory->GetDirectory("pi0_17"));
     file_out->cd(); pi0Hist[18] = new GHistHelTaggedMeson(gDirectory->GetDirectory("pi0_18"));
     file_out->cd(); pi0Hist[19] = new GHistHelTaggedMeson(gDirectory->GetDirectory("pi0_19"));
@@ -219,8 +219,8 @@ Bool_t  GPlotEbins::Process(const char* input_filename, const char* output_filen
     file_out->cd(); pi0Hist[37] = new GHistHelTaggedMeson(gDirectory->GetDirectory("pi0_37"));
     file_out->cd(); pi0Hist[38] = new GHistHelTaggedMeson(gDirectory->GetDirectory("pi0_38"));
     file_out->cd(); pi0Hist[39] = new GHistHelTaggedMeson(gDirectory->GetDirectory("pi0_39"));
-    file_out->cd(); pi0Hist[40] = new GHistHelTaggedMeson(gDirectory->GetDirectory("pi0_40"));
-    file_out->cd(); pi0Hist[41] = new GHistHelTaggedMeson(gDirectory->GetDirectory("pi0_41"));
+    file_out->cd(); pi0Hist[40] = new GHistHelTaggedMeson(gDirectory->GetDirectory("pi0_40"));*/
+    //file_out->cd(); pi0Hist[41] = new GHistHelTaggedMeson(gDirectory->GetDirectory("pi0_41"));
     //file_out->cd(); pi0Hist[42] = new GHistHelTaggedMeson(gDirectory->GetDirectory("pi0_42"));
 
 
@@ -258,9 +258,10 @@ Bool_t  GPlotEbins::Process(const char* input_filename, const char* output_filen
    // etapHist = new GHistTaggedEtap(gDirectory->GetDirectory("etap"));
 
     TraverseEntries(0, pi0->GetNEntries()+1);
-    for(int i=0; i<41;i++)
+
+    for(int j=0; j<=15;j++)
     {
-    pi0Hist[i]->Write();
+    pi0Hist[j]->Write();
     }
 
     //=============Eta=================================

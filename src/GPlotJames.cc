@@ -24,26 +24,26 @@ void  GPlotJames::ProcessEvent()
             for(int i=0;i<tagger->GetNPrompt(); i++)
             //if(tagger->GetNPrompt()==1)
             {
-                for(int l=0; l<41; l++)
+                for(int l=0; l<=15; l++)
                 {
                     if(tagger->GetPhotonBeam_E(tagger->GetPromptIndex(i))>=((30*l)+210) && tagger->GetPhotonBeam_E(tagger->GetPromptIndex(i))<=((30*(l+1))+210))
                     {
-                        pi0Hist[l]->FillPromptTagger( tagger->GetMissingVector(tagger->GetPromptIndex(i)),tagger->GetTagged_t(tagger->GetPromptIndex(i)),tagger->GetPhotonBeam_E(tagger->GetPromptIndex(i)),tagger->GetTagged_ch(tagger->GetPromptIndex(i)));
-                        pi0Hist[l]->FillPromptMeson( pi0->Particle(0));
-                        pi0Hist[l]->FillPromptPhoton( photons->Particle(pi0->GetDaughterIndex(i,0)), photons->Particle(pi0->GetDaughterIndex(0,i)));
+                        pi0Histall[l]->FillPromptTagger(tagger->GetMissingVector(tagger->GetPromptIndex(i)),tagger->GetTagged_t(tagger->GetPromptIndex(i)),tagger->GetPhotonBeam_E(tagger->GetPromptIndex(i)),tagger->GetTagged_ch(tagger->GetPromptIndex(i)));
+                        pi0Histall[l]->FillPromptMeson(pi0->Particle(0));
+                        pi0Histall[l]->FillPromptPhoton(photons->Particle(pi0->GetDaughterIndex(0,0)), photons->Particle(pi0->GetDaughterIndex(0,1)));
                     }
                 }
             }
             for(int i=0;i<tagger->GetNRand(); i++)
-           // if(tagger->GetNRand()==1)
+            //if(tagger->GetNRand()==1)
             {
-                for(int l=0; l<41; l++)
+                for(int l=0; l<=15; l++)
                 {
                     if(tagger->GetPhotonBeam_E(tagger->GetRandIndex(i))>=((30*l)+210) && tagger->GetPhotonBeam_E(tagger->GetRandIndex(i))<=((30*(l+1))+210))
                     {
-                        pi0Hist[l]->FillRandTagger( tagger->GetMissingVector(tagger->GetRandIndex(i)),tagger->GetTagged_t(tagger->GetRandIndex(i)),tagger->GetPhotonBeam_E(tagger->GetRandIndex(i)),tagger->GetTagged_ch(tagger->GetRandIndex(i)));
-                        pi0Hist[l]->FillRandMeson( pi0->Particle(0));
-                        pi0Hist[l]->FillRandPhoton( photons->Particle(pi0->GetDaughterIndex(i,0)), photons->Particle(pi0->GetDaughterIndex(0,i)));
+                        pi0Histall[l]->FillRandTagger(tagger->GetMissingVector(tagger->GetRandIndex(i)),tagger->GetTagged_t(tagger->GetRandIndex(i)),tagger->GetPhotonBeam_E(tagger->GetRandIndex(i)),tagger->GetTagged_ch(tagger->GetRandIndex(i)));
+                        pi0Histall[l]->FillRandMeson(pi0->Particle(0));
+                        pi0Histall[l]->FillRandPhoton(photons->Particle(pi0->GetDaughterIndex(0,0)), photons->Particle(pi0->GetDaughterIndex(0,1)));
                     }
                 }
             }
@@ -121,7 +121,7 @@ Bool_t  GPlotJames::Process(const char* input_filename, const char* output_filen
     file_out->cd(); gDirectory->mkdir("pi0_13");
     file_out->cd(); gDirectory->mkdir("pi0_14");
     file_out->cd(); gDirectory->mkdir("pi0_15");
-    file_out->cd(); gDirectory->mkdir("pi0_16");
+    /*file_out->cd(); gDirectory->mkdir("pi0_16");
     file_out->cd(); gDirectory->mkdir("pi0_17");
     file_out->cd(); gDirectory->mkdir("pi0_18");
     file_out->cd(); gDirectory->mkdir("pi0_19");
@@ -146,7 +146,7 @@ Bool_t  GPlotJames::Process(const char* input_filename, const char* output_filen
     file_out->cd(); gDirectory->mkdir("pi0_38");
     file_out->cd(); gDirectory->mkdir("pi0_39");
     file_out->cd(); gDirectory->mkdir("pi0_40");
-    file_out->cd(); gDirectory->mkdir("pi0_41");
+    file_out->cd(); gDirectory->mkdir("pi0_41");*/
     //file_out->cd(); gDirectory->mkdir("pi0_42");
 
     //=================Eta starts here==========================
@@ -179,49 +179,49 @@ Bool_t  GPlotJames::Process(const char* input_filename, const char* output_filen
    // file_out->cd();
     //gDirectory->mkdir("etap");
 
-    file_out->cd(); pi0Hist[0] = new GHistTaggedMeson(gDirectory->GetDirectory("pi0_0"));
-    file_out->cd(); pi0Hist[1] = new GHistTaggedMeson(gDirectory->GetDirectory("pi0_1"));
-    file_out->cd(); pi0Hist[2] = new GHistTaggedMeson(gDirectory->GetDirectory("pi0_2"));
-    file_out->cd(); pi0Hist[3] = new GHistTaggedMeson(gDirectory->GetDirectory("pi0_3"));
-    file_out->cd(); pi0Hist[4] = new GHistTaggedMeson(gDirectory->GetDirectory("pi0_4"));
-    file_out->cd(); pi0Hist[5] = new GHistTaggedMeson(gDirectory->GetDirectory("pi0_5"));
-    file_out->cd(); pi0Hist[6] = new GHistTaggedMeson(gDirectory->GetDirectory("pi0_6"));
-    file_out->cd(); pi0Hist[7] = new GHistTaggedMeson(gDirectory->GetDirectory("pi0_7"));
-    file_out->cd(); pi0Hist[8] = new GHistTaggedMeson(gDirectory->GetDirectory("pi0_8"));
-    file_out->cd(); pi0Hist[9] = new GHistTaggedMeson(gDirectory->GetDirectory("pi0_9"));
-    file_out->cd(); pi0Hist[10] = new GHistTaggedMeson(gDirectory->GetDirectory("pi0_10"));
-    file_out->cd(); pi0Hist[11] = new GHistTaggedMeson(gDirectory->GetDirectory("pi0_11"));
-    file_out->cd(); pi0Hist[12] = new GHistTaggedMeson(gDirectory->GetDirectory("pi0_12"));
-    file_out->cd(); pi0Hist[13] = new GHistTaggedMeson(gDirectory->GetDirectory("pi0_13"));
-    file_out->cd(); pi0Hist[14] = new GHistTaggedMeson(gDirectory->GetDirectory("pi0_14"));
-    file_out->cd(); pi0Hist[15] = new GHistTaggedMeson(gDirectory->GetDirectory("pi0_15"));
-    file_out->cd(); pi0Hist[16] = new GHistTaggedMeson(gDirectory->GetDirectory("pi0_16"));
-    file_out->cd(); pi0Hist[17] = new GHistTaggedMeson(gDirectory->GetDirectory("pi0_17"));
-    file_out->cd(); pi0Hist[18] = new GHistTaggedMeson(gDirectory->GetDirectory("pi0_18"));
-    file_out->cd(); pi0Hist[19] = new GHistTaggedMeson(gDirectory->GetDirectory("pi0_19"));
-    file_out->cd(); pi0Hist[20] = new GHistTaggedMeson(gDirectory->GetDirectory("pi0_20"));
-    file_out->cd(); pi0Hist[21] = new GHistTaggedMeson(gDirectory->GetDirectory("pi0_21"));
-    file_out->cd(); pi0Hist[22] = new GHistTaggedMeson(gDirectory->GetDirectory("pi0_22"));
-    file_out->cd(); pi0Hist[23] = new GHistTaggedMeson(gDirectory->GetDirectory("pi0_23"));
-    file_out->cd(); pi0Hist[24] = new GHistTaggedMeson(gDirectory->GetDirectory("pi0_24"));
-    file_out->cd(); pi0Hist[25] = new GHistTaggedMeson(gDirectory->GetDirectory("pi0_25"));
-    file_out->cd(); pi0Hist[26] = new GHistTaggedMeson(gDirectory->GetDirectory("pi0_26"));
-    file_out->cd(); pi0Hist[27] = new GHistTaggedMeson(gDirectory->GetDirectory("pi0_27"));
-    file_out->cd(); pi0Hist[28] = new GHistTaggedMeson(gDirectory->GetDirectory("pi0_28"));
-    file_out->cd(); pi0Hist[29] = new GHistTaggedMeson(gDirectory->GetDirectory("pi0_29"));
-    file_out->cd(); pi0Hist[30] = new GHistTaggedMeson(gDirectory->GetDirectory("pi0_30"));
-    file_out->cd(); pi0Hist[31] = new GHistTaggedMeson(gDirectory->GetDirectory("pi0_31"));
-    file_out->cd(); pi0Hist[32] = new GHistTaggedMeson(gDirectory->GetDirectory("pi0_32"));
-    file_out->cd(); pi0Hist[33] = new GHistTaggedMeson(gDirectory->GetDirectory("pi0_33"));
-    file_out->cd(); pi0Hist[34] = new GHistTaggedMeson(gDirectory->GetDirectory("pi0_34"));
-    file_out->cd(); pi0Hist[35] = new GHistTaggedMeson(gDirectory->GetDirectory("pi0_35"));
-    file_out->cd(); pi0Hist[36] = new GHistTaggedMeson(gDirectory->GetDirectory("pi0_36"));
-    file_out->cd(); pi0Hist[37] = new GHistTaggedMeson(gDirectory->GetDirectory("pi0_37"));
-    file_out->cd(); pi0Hist[38] = new GHistTaggedMeson(gDirectory->GetDirectory("pi0_38"));
-    file_out->cd(); pi0Hist[39] = new GHistTaggedMeson(gDirectory->GetDirectory("pi0_39"));
-    file_out->cd(); pi0Hist[40] = new GHistTaggedMeson(gDirectory->GetDirectory("pi0_40"));
-    file_out->cd(); pi0Hist[41] = new GHistTaggedMeson(gDirectory->GetDirectory("pi0_41"));
-    //file_out->cd(); pi0Hist[42] = new GHistTaggedMeson(gDirectory->GetDirectory("pi0_42"));
+    file_out->cd();pi0Histall[0] = new GHistTaggedMeson(gDirectory->GetDirectory("pi0_0"));
+    file_out->cd();pi0Histall[1] = new GHistTaggedMeson(gDirectory->GetDirectory("pi0_1"));
+    file_out->cd();pi0Histall[2] = new GHistTaggedMeson(gDirectory->GetDirectory("pi0_2"));
+    file_out->cd();pi0Histall[3] = new GHistTaggedMeson(gDirectory->GetDirectory("pi0_3"));
+    file_out->cd();pi0Histall[4] = new GHistTaggedMeson(gDirectory->GetDirectory("pi0_4"));
+    file_out->cd();pi0Histall[5] = new GHistTaggedMeson(gDirectory->GetDirectory("pi0_5"));
+    file_out->cd();pi0Histall[6] = new GHistTaggedMeson(gDirectory->GetDirectory("pi0_6"));
+    file_out->cd();pi0Histall[7] = new GHistTaggedMeson(gDirectory->GetDirectory("pi0_7"));
+    file_out->cd();pi0Histall[8] = new GHistTaggedMeson(gDirectory->GetDirectory("pi0_8"));
+    file_out->cd();pi0Histall[9] = new GHistTaggedMeson(gDirectory->GetDirectory("pi0_9"));
+    file_out->cd();pi0Histall[10] = new GHistTaggedMeson(gDirectory->GetDirectory("pi0_10"));
+    file_out->cd();pi0Histall[11] = new GHistTaggedMeson(gDirectory->GetDirectory("pi0_11"));
+    file_out->cd();pi0Histall[12] = new GHistTaggedMeson(gDirectory->GetDirectory("pi0_12"));
+    file_out->cd();pi0Histall[13] = new GHistTaggedMeson(gDirectory->GetDirectory("pi0_13"));
+    file_out->cd();pi0Histall[14] = new GHistTaggedMeson(gDirectory->GetDirectory("pi0_14"));
+    file_out->cd();pi0Histall[15] = new GHistTaggedMeson(gDirectory->GetDirectory("pi0_15"));
+    /*file_out->cd();pi0Histall[16] = new GHistTaggedMeson(gDirectory->GetDirectory("pi0_16"));
+    file_out->cd();pi0Histall[17] = new GHistTaggedMeson(gDirectory->GetDirectory("pi0_17"));
+    file_out->cd();pi0Histall[18] = new GHistTaggedMeson(gDirectory->GetDirectory("pi0_18"));
+    file_out->cd();pi0Histall[19] = new GHistTaggedMeson(gDirectory->GetDirectory("pi0_19"));
+    file_out->cd();pi0Histall[20] = new GHistTaggedMeson(gDirectory->GetDirectory("pi0_20"));
+    file_out->cd();pi0Histall[21] = new GHistTaggedMeson(gDirectory->GetDirectory("pi0_21"));
+    file_out->cd();pi0Histall[22] = new GHistTaggedMeson(gDirectory->GetDirectory("pi0_22"));
+    file_out->cd();pi0Histall[23] = new GHistTaggedMeson(gDirectory->GetDirectory("pi0_23"));
+    file_out->cd();pi0Histall[24] = new GHistTaggedMeson(gDirectory->GetDirectory("pi0_24"));
+    file_out->cd();pi0Histall[25] = new GHistTaggedMeson(gDirectory->GetDirectory("pi0_25"));
+    file_out->cd();pi0Histall[26] = new GHistTaggedMeson(gDirectory->GetDirectory("pi0_26"));
+    file_out->cd();pi0Histall[27] = new GHistTaggedMeson(gDirectory->GetDirectory("pi0_27"));
+    file_out->cd();pi0Histall[28] = new GHistTaggedMeson(gDirectory->GetDirectory("pi0_28"));
+    file_out->cd();pi0Histall[29] = new GHistTaggedMeson(gDirectory->GetDirectory("pi0_29"));
+    file_out->cd();pi0Histall[30] = new GHistTaggedMeson(gDirectory->GetDirectory("pi0_30"));
+    file_out->cd();pi0Histall[31] = new GHistTaggedMeson(gDirectory->GetDirectory("pi0_31"));
+    file_out->cd();pi0Histall[32] = new GHistTaggedMeson(gDirectory->GetDirectory("pi0_32"));
+    file_out->cd();pi0Histall[33] = new GHistTaggedMeson(gDirectory->GetDirectory("pi0_33"));
+    file_out->cd();pi0Histall[34] = new GHistTaggedMeson(gDirectory->GetDirectory("pi0_34"));
+    file_out->cd();pi0Histall[35] = new GHistTaggedMeson(gDirectory->GetDirectory("pi0_35"));
+    file_out->cd();pi0Histall[36] = new GHistTaggedMeson(gDirectory->GetDirectory("pi0_36"));
+    file_out->cd();pi0Histall[37] = new GHistTaggedMeson(gDirectory->GetDirectory("pi0_37"));
+    file_out->cd();pi0Histall[38] = new GHistTaggedMeson(gDirectory->GetDirectory("pi0_38"));
+    file_out->cd();pi0Histall[39] = new GHistTaggedMeson(gDirectory->GetDirectory("pi0_39"));
+    file_out->cd();pi0Histall[40] = new GHistTaggedMeson(gDirectory->GetDirectory("pi0_40"));
+    file_out->cd();pi0Histall[41] = new GHistTaggedMeson(gDirectory->GetDirectory("pi0_41"));*/
+    //file_out->cd();pi0Histall[42] = new GHistTaggedMeson(gDirectory->GetDirectory("pi0_42"));
 
 
 
@@ -258,9 +258,10 @@ Bool_t  GPlotJames::Process(const char* input_filename, const char* output_filen
    // etapHist = new GHistTaggedEtap(gDirectory->GetDirectory("etap"));
 
     TraverseEntries(0, pi0->GetNEntries()+1);
-    for(int i=0; i<41;i++)
+
+    for(int j=0; j<=15;j++)
     {
-    pi0Hist[i]->Write();
+    pi0Histall[j]->Write();
     }
 
     //=============Eta=================================

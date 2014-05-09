@@ -48,9 +48,9 @@ void* start(void* arguments)
     else if(strcmp(arg->type, "all") == 0 || strcmp(arg->type, "hist") == 0)
         tree    = new GPlot();
     else if(strcmp(arg->type, "EBINS") == 0 || strcmp(arg->type, "ebins") == 0)
-          tree    = new GPlotEbins();
+        tree    = new GPlotEbins();
     else if(strcmp(arg->type, "sum") == 0 || strcmp(arg->type, "SUM") == 0)
-          tree    = new GPlotJames();
+        tree    = new GPlotJames();
     else if(strcmp(arg->type, "mccut") == 0 || strcmp(arg->type, "mcCut") == 0 || strcmp(arg->type, "MCCut") == 0)
         tree    = new GPlotCutMC();
     else if(strcmp(arg->type, "proton") == 0 || strcmp(arg->type, "Proton") == 0 || strcmp(arg->type, "PROTON") == 0)

@@ -18,7 +18,7 @@ class  GPlotEbins    : public GTreeManager
 {
 private:
 
-    GHistHelTaggedMeson*  pi0Hist[41];
+    GHistHelTaggedMeson*  pi0Hist[15];
 
 
 

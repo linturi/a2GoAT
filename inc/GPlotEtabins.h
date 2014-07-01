@@ -1,5 +1,5 @@
-#ifndef __GPlotEbins_h__
-#define __GPlotEbins_h__
+#ifndef __GPlotEtabins_h__
+#define __GPlotEtabins_h__
 
 
 #include <TH1D.h>
@@ -14,17 +14,11 @@
 
 
 
-class  GPlotEbins    : public GTreeManager
+class  GPlotEtabins    : public GTreeManager
 {
 private:
 
-    GHistHelTaggedMeson*  pi0Hist[15];
-
-
-
-  //==================Eta===============================================================
-    GHistHelTaggedMeson*  etaHist;
-    GHistHelTaggedMeson*  etaHist0;
+    GHistHelTaggedMeson*  etaHist[6];
 
 
 protected:
@@ -32,8 +26,8 @@ protected:
     virtual void    ProcessEvent();
 
 public:
-    GPlotEbins();
-    virtual ~GPlotEbins();
+    GPlotEtabins();
+    virtual ~GPlotEtabins();
 
     virtual Bool_t  Process(const char* input_filename, const char* output_filename = 0);
 };

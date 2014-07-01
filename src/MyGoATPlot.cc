@@ -6,8 +6,10 @@
 #include "GPlotTime.h"
 #include "GPlotCut.h"
 #include "GPlot.h"
-#include "GPlotEbins.h"
-#include "GPlotJames.h"
+#include "GPlotPi0bins.h"
+#include "GPlotPi0.h"
+#include "GPlotEta.h"
+#include "GPlotEtabins.h"
 #include "GPlotCutMC.h"
 #include "GPlotProton.h"
 #include "GPlotEnergyBins.h"
@@ -45,12 +47,18 @@ void* start(void* arguments)
         tree    = new GPlotTime();
     else if(strcmp(arg->type, "cut") == 0 || strcmp(arg->type, "Cut") == 0 || strcmp(arg->type, "CUT") == 0)
         tree    = new GPlotCut();
+   ////=================James======================
     else if(strcmp(arg->type, "all") == 0 || strcmp(arg->type, "hist") == 0)
         tree    = new GPlot();
-    else if(strcmp(arg->type, "EBINS") == 0 || strcmp(arg->type, "ebins") == 0)
-        tree    = new GPlotEbins();
-    else if(strcmp(arg->type, "sum") == 0 || strcmp(arg->type, "SUM") == 0)
-        tree    = new GPlotJames();
+    else if(strcmp(arg->type, "PBINS") == 0 || strcmp(arg->type, "Pbins") == 0)
+        tree    = new GPlotPi0bins();
+    else if(strcmp(arg->type, "Psum") == 0 || strcmp(arg->type, "PSUM") == 0)
+        tree    = new GPlotPi0();
+    else if(strcmp(arg->type, "ETABINS") == 0 || strcmp(arg->type, "Etabins") == 0)
+        tree    = new GPlotEtabins();
+    else if(strcmp(arg->type, "Esum") == 0 || strcmp(arg->type, "ESUM") == 0)
+        tree    = new GPlotEta();
+    //James
     else if(strcmp(arg->type, "mccut") == 0 || strcmp(arg->type, "mcCut") == 0 || strcmp(arg->type, "MCCut") == 0)
         tree    = new GPlotCutMC();
     else if(strcmp(arg->type, "proton") == 0 || strcmp(arg->type, "Proton") == 0 || strcmp(arg->type, "PROTON") == 0)

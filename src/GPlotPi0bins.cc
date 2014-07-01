@@ -1,4 +1,4 @@
-#include "GPlotEbins.h"
+#include "GPlotPi0bins.h"
 
 
 using namespace std;
@@ -6,16 +6,16 @@ using namespace std;
 //const Bool_t IsReversed = kTRUE;
 
 
-GPlotEbins::GPlotEbins()
+GPlotPi0bins::GPlotPi0bins()
 {
 
 }
 
-GPlotEbins::~GPlotEbins()
+GPlotPi0bins::~GPlotPi0bins()
 {
 }
 
-void  GPlotEbins::ProcessEvent()
+void  GPlotPi0bins::ProcessEvent()
 {
     if(photons->GetNParticles() == 2)
     {
@@ -92,7 +92,7 @@ void  GPlotEbins::ProcessEvent()
 
 }
 
-Bool_t  GPlotEbins::Process(const char* input_filename, const char* output_filename)
+Bool_t  GPlotPi0bins::Process(const char* input_filename, const char* output_filename)
 {
     if(!Open(input_filename))    return kFALSE;
     if(!OpenPhotons())    return kFALSE;
@@ -223,9 +223,6 @@ Bool_t  GPlotEbins::Process(const char* input_filename, const char* output_filen
     //file_out->cd(); pi0Hist[41] = new GHistHelTaggedMeson(gDirectory->GetDirectory("pi0_41"));
     //file_out->cd(); pi0Hist[42] = new GHistHelTaggedMeson(gDirectory->GetDirectory("pi0_42"));
 
-
-
-
     //=================== Eta ================================
     /*file_out->cd();
     etaHist = new GHistHelTaggedMeson(gDirectory->GetDirectory("eta"));
@@ -265,7 +262,7 @@ Bool_t  GPlotEbins::Process(const char* input_filename, const char* output_filen
     }
 
     //=============Eta=================================
- /*    TraverseEntries(0, eta->GetNEntries()+1);
+ /* TraverseEntries(0, eta->GetNEntries()+1);
     etaHist->Write();
     etaHist0->Write();
     etaHist1->Write();

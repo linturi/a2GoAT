@@ -1,4 +1,4 @@
-#include "GPlotJames.h"
+#include "GPlotPi0.h"
 
 
 using namespace std;
@@ -6,16 +6,16 @@ using namespace std;
 //const Bool_t IsReversed = kTRUE;
 
 
-GPlotJames::GPlotJames()
+GPlotPi0::GPlotPi0()
 {
 
 }
 
-GPlotJames::~GPlotJames()
+GPlotPi0::~GPlotPi0()
 {
 }
 
-void  GPlotJames::ProcessEvent()
+void  GPlotPi0::ProcessEvent()
 {
     if(photons->GetNParticles() == 2)
     {
@@ -92,7 +92,7 @@ void  GPlotJames::ProcessEvent()
 
 }
 
-Bool_t  GPlotJames::Process(const char* input_filename, const char* output_filename)
+Bool_t  GPlotPi0::Process(const char* input_filename, const char* output_filename)
 {
     if(!Open(input_filename))    return kFALSE;
     if(!OpenPhotons())    return kFALSE;

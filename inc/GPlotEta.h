@@ -1,5 +1,5 @@
-#ifndef __GPlotJames_h__
-#define __GPlotJames_h__
+#ifndef __GPlotEta_h__
+#define __GPlotEta_h__
 
 
 #include <TH1D.h>
@@ -14,17 +14,11 @@
 
 
 
-class  GPlotJames    : public GTreeManager
+class  GPlotEta    : public GTreeManager
 {
 private:
 
-    GHistTaggedMeson* pi0Histall[15];
-
-
-
-  //==================Eta===============================================================
-    GHistTaggedMeson*  etaHist;
-    GHistTaggedMeson*  etaHist0;
+    GHistTaggedMeson*  etaHist[6];
 
 
 protected:
@@ -32,8 +26,8 @@ protected:
     virtual void    ProcessEvent();
 
 public:
-    GPlotJames();
-    virtual ~GPlotJames();
+    GPlotEta();
+    virtual ~GPlotEta();
 
     virtual Bool_t  Process(const char* input_filename, const char* output_filename = 0);
 };

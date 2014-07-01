@@ -171,7 +171,6 @@ void    GPlotCut::Init()
 
     hProton.pi0.invMass   = new GHistD(file_out->GetDirectory("Proton")->GetDirectory("pi0"), TString("pi0_invMass"), TString("pi0_invMass"), 2000, 0, 2000);
     hProton.pi0.misMass   = new GHistD(file_out->GetDirectory("Proton")->GetDirectory("pi0"), TString("pi0_misMass"), TString("pi0_misMass"), 2000, 0, 2000);
-
     hProton.eta.invMass   = new GHistD(file_out->GetDirectory("Proton")->GetDirectory("eta"), TString("eta_invMass"), TString("eta_invMass"), 2000, 0, 2000);
     hProton.eta.misMass   = new GHistD(file_out->GetDirectory("Proton")->GetDirectory("eta"), TString("eta_misMass"), TString("eta_misMass"), 2000, 0, 2000);
     hProton.eta.h2g.invMass   = new GHistD(file_out->GetDirectory("Proton")->GetDirectory("eta")->GetDirectory("h2g"), TString("eta_2g_invMass"), TString("eta_2g_invMass"), 2000, 0, 2000);
